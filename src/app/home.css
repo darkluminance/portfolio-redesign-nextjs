@@ -1,0 +1,50 @@
+.homepage {
+	max-height: 100vh;
+}
+
+.homeTextcontent {
+	position: absolute;
+	top: 13%;
+	/* letter-spacing: normal; */
+
+	.homeTitle {
+		font-size: var(--fs-400);
+		font-weight: var(--fw-600);
+		text-transform: uppercase;
+		line-height: 1.5;
+	}
+
+	.homeDescription {
+		max-width: 24ch;
+		font-size: var(--fs-300);
+	}
+}
+
+@media (min-width: 25rem) {
+	.homeTextcontent {
+		.homeTitle {
+			font-size: var(--fs-500);
+		}
+		.homeDescription {
+			font-size: var(--fs-400);
+		}
+	}
+}
+
+@media (min-width: 45rem) {
+	main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.homeTextcontent {
+		top: calc(50% - 96px);
+		.homeTitle {
+			font-size: var(--fs-600);
+		}
+		.homeDescription {
+			max-width: 100%;
+			font-size: var(--fs-500);
+		}
+	}
+}

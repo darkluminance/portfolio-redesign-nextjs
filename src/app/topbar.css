@@ -1,0 +1,47 @@
+.topbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	.ryeLogo img {
+		width: 4.5rem;
+		height: 2rem;
+	}
+
+	.navItems {
+		position: fixed;
+		left: 0;
+		bottom: 5%;
+		width: 100%;
+
+		.navList {
+			/* gap: 1rem; */
+			padding: 1rem;
+
+			.navList-Item {
+				width: 6rem;
+				text-align: center;
+				padding-inline: 8px;
+			}
+		}
+	}
+}
+
+@media (min-width: 45rem) {
+	.topbar {
+		.navItems {
+			position: relative;
+			width: auto;
+
+			.navList {
+				gap: 2rem;
+				padding: 0;
+
+				.navList-Item {
+					width: auto;
+					padding: 0;
+				}
+			}
+		}
+	}
+}
