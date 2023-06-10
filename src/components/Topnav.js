@@ -7,7 +7,9 @@ export default function Topnav() {
 		<div className="topNav flex-center-ver">
 			<div className="homeLink flex-row flex-center-ver">
 				<div className="homeItem">
-					<Link href="/">HOME</Link>
+					<Link href="/" className="text-link">
+						HOME
+					</Link>
 				</div>
 				<div className="homeLine"></div>
 			</div>

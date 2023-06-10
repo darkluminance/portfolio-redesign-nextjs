@@ -1,6 +1,7 @@
 .contactItems {
 	position: absolute;
-	left: 13vw;
+	/* left: 13vw; */
+	margin-left: 5%;
 	top: 30%;
 	max-width: 80vw;
 }
@@ -26,7 +27,7 @@
 	flex-wrap: wrap;
 
 	.contactLinkItem {
-		margin-inline: 0.69rem;
+		margin-right: 1rem;
 		text-decoration: underline;
 	}
 
@@ -37,7 +38,7 @@
 		transition: color 0.25s ease-in-out, box-shadow 0.5s ease-in-out;
 	}
 	.contactLinkItem a:hover {
-		box-shadow: inset 420px 0 0 0 var(--accent-color);
+		box-shadow: inset 420px 0 0 0 var(--primary-dark-color);
 		color: var(--primary-color);
 	}
 }

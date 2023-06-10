@@ -1,0 +1,76 @@
+.aboutTextContent {
+	max-width: 80vw;
+	line-height: 1.5;
+
+	#p1 {
+		font-size: var(--fs-500);
+		font-weight: var(--fw-500);
+		margin-bottom: 1rem;
+	}
+}
+
+.aboutSideContent {
+	margin-bottom: 2rem;
+
+	.aboutMyPic {
+		margin-top: 1.5rem;
+	}
+	.aboutMyPic img {
+		width: 80vw;
+		height: auto;
+	}
+
+	.aboutResume {
+		margin-top: 1rem;
+
+		.aboutResumeBtn {
+			background-color: var(--primary-dark-color);
+			color: var(--primary-color);
+			/* border: 2px solid var(--primary-color); */
+			border-radius: 0;
+			width: 300px;
+			height: 44px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background-color 0.5s ease;
+		}
+		.aboutResumeBtn:hover {
+			background-color: var(--primary-color);
+			color: var(--primary-dark-color);
+			border: 2px solid var(--primary-dark-color);
+		}
+
+		.aboutMyPhotographyBtn {
+			font-weight: var(--fs-700);
+			text-align: center !important;
+		}
+	}
+}
+
+@media (min-width: 60rem) {
+	.aboutPage {
+	}
+	.aboutContainer {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: 2rem;
+		margin: 2rem;
+		max-width: var(--max-width-container);
+	}
+
+	.aboutSideContent {
+		margin: 0 auto;
+	}
+
+	.aboutMyPic img {
+		width: auto !important;
+		height: 420px !important;
+	}
+}
+
+@media (max-width: 60rem) {
+	.aboutResumeBtn {
+		width: 80vw !important;
+	}
+}

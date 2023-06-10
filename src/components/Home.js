@@ -3,7 +3,7 @@ import Topbar from './Topbar';
 
 export default function HomePage() {
 	return (
-		<div className="homepage">
+		<div className="page homepage">
 			<main>
 				<Topbar></Topbar>
 				<div className="homeTextcontent">

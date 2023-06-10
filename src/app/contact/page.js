@@ -5,7 +5,7 @@ export default function Contact() {
 	return (
 		<>
 			<Topnav></Topnav>
-			<div className="contactItems ">
+			<div className="page contactItems ">
 				<div className="contactHeader">
 					<h1>HELLO.</h1>
 				</div>
@@ -15,17 +15,20 @@ export default function Contact() {
 				<div className="contactItem">
 					<p>
 						Email:{' '}
-						<a href="mailto:ryeofficial13@gmail.com">ryeofficial13@gmail.com</a>
+						<a href="mailto:ryeofficial13@gmail.com" className="text-link">
+							ryeofficial13@gmail.com
+						</a>
 					</p>
 					<p>Phone: +8801840054144</p>
 					<div className="contactLinks">
-						<p>On the internet: </p>
+						<p>On the internet:&nbsp;</p>
 						<div className="contactLinkItems">
 							<div className="contactLinkItem">
 								<a
 									href="https://www.linkedin.com/in/rye013/"
 									target="_blank"
 									rel="noreferrer"
+									className="text-link"
 								>
 									LinkedIn
 								</a>
@@ -35,6 +38,7 @@ export default function Contact() {
 									href="https://dribbble.com/darkluminance"
 									target="_blank"
 									rel="noreferrer"
+									className="text-link"
 								>
 									Dribbble
 								</a>
@@ -44,6 +48,7 @@ export default function Contact() {
 									href="https://www.facebook.com/darkluminance/"
 									target="_blank"
 									rel="noreferrer"
+									className="text-link"
 								>
 									Facebook
 								</a>
@@ -53,6 +58,7 @@ export default function Contact() {
 									href="https://www.instagram.com/rye_013/"
 									target="_blank"
 									rel="noreferrer"
+									className="text-link"
 								>
 									Instagram
 								</a>
@@ -62,6 +68,7 @@ export default function Contact() {
 									href="https://github.com/darkluminance/"
 									target="_blank"
 									rel="noreferrer"
+									className="text-link"
 								>
 									Github
 								</a>
