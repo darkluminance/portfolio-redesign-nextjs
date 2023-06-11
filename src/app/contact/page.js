@@ -5,7 +5,7 @@ export default function Contact() {
 	return (
 		<>
 			<Topnav></Topnav>
-			<div className="page contactItems ">
+			<div className="contactItems ">
 				<div className="contactHeader">
 					<h1>HELLO.</h1>
 				</div>

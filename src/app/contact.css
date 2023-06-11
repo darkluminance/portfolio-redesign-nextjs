@@ -53,3 +53,9 @@
 		/* font-size: var(--fs-400); */
 	}
 }
+
+@media (max-width: 35rem) {
+	.contactItems {
+		margin-left: 0;
+	}
+}

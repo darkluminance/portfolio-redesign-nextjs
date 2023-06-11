@@ -46,19 +46,20 @@ export default function About() {
 							{/* <NavLink to="/resume">
 									</NavLink> */}
 							<Link
-								href="https://drive.google.com/file/d/1VN5PZaeya5kDyGRc_yTqUnxKGyiMlMcI/view?usp=sharing"
-								target="_blank"
-								rel="noreferrer"
+								// href="https://drive.google.com/file/d/1VN5PZaeya5kDyGRc_yTqUnxKGyiMlMcI/view?usp=sharing"
+								href="/about/resume"
+								// target="_blank"
+								// rel="noreferrer"
 							>
-								<div className="aboutResumeBtn">My resume</div>
+								<div className="aboutResumeBtn">Check out my Resume</div>
 							</Link>
 						</div>
 						<div className="aboutResume">
 							<div className="aboutMyPhotographyBtn">
 								{/* <NavLink to="/resume">
 									</NavLink> */}
-								<Link href="/photography" className="text-link">
-									<span>Check out my photographs</span>
+								<Link href="/about/photography" className="text-link">
+									<span>Check out my Photographs</span>
 								</Link>
 							</div>
 						</div>

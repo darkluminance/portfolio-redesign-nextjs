@@ -142,6 +142,13 @@ button {
 
 .page {
 	margin-bottom: 2rem;
+	/* padding: 2rem; */
+}
+
+@media (max-width: 60rem) {
+	.page {
+		padding: 2rem;
+	}
 }
 
 .pageHeader {

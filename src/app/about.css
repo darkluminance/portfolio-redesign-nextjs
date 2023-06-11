@@ -10,10 +10,9 @@
 }
 
 .aboutSideContent {
-	margin-bottom: 2rem;
-
 	.aboutMyPic {
 		margin-top: 1.5rem;
+		margin-bottom: 2rem;
 	}
 	.aboutMyPic img {
 		width: 80vw;
