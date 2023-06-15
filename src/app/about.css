@@ -9,6 +9,10 @@
 	}
 }
 
+.aboutTextContent p {
+	margin-block: 1rem;
+}
+
 .aboutSideContent {
 	.aboutMyPic {
 		margin-top: 1.5rem;
