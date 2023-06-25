@@ -2,13 +2,13 @@ import Ryelogo from './Ryelogo';
 import Link from 'next/link';
 import '../app/topnav.css';
 
-export default function Topnav() {
+const Topnav = ({ routeLink, routeName }) => {
 	return (
 		<div className="topNav flex-center-ver">
 			<div className="homeLink flex-row flex-center-ver">
 				<div className="homeItem">
-					<Link href="/" className="text-link">
-						HOME
+					<Link href={routeLink} className="text-link">
+						{routeName}
 					</Link>
 				</div>
 				<div className="homeLine"></div>
@@ -20,4 +20,11 @@ export default function Topnav() {
 			</div>
 		</div>
 	);
-}
+};
+
+Topnav.defaultProps = {
+	routeLink: '/',
+	routeName: 'HOME',
+};
+
+export default Topnav;

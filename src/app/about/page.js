@@ -56,7 +56,11 @@ export default function About() {
 							<div className="aboutMyPhotographyBtn">
 								{/* <NavLink to="/resume">
 									</NavLink> */}
-								<Link href="/about/photography" className="text-link">
+								<Link
+									href="/about/photography"
+									className="text-link"
+									style={{ textDecoration: 'underline' }}
+								>
 									<span>Check out my Photographs</span>
 								</Link>
 							</div>

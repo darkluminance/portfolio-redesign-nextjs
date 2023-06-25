@@ -5,7 +5,7 @@ import '../../photos.css';
 export default function Photography() {
 	return (
 		<>
-			<Topnav></Topnav>
+			<Topnav routeLink="/about" routeName="ABOUT"></Topnav>
 			<div className="page photographyPage flex-center-hor">
 				<div className="pageContent">
 					<h1 className="pageHeader">My Photographs</h1>
