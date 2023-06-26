@@ -141,17 +141,26 @@ button {
 
 .page {
 	margin-bottom: 2rem;
-	/* padding: 2rem; */
+	padding: 2rem;
 }
 
-@media (max-width: 60rem) {
+/* @media (max-width: 60rem) {
 	.page {
-		/* padding: 2rem; */
+		padding: 2rem;
 	}
-}
+} */
 
 .pageHeader {
 	margin-bottom: 1.5rem;
+}
+
+.container {
+	width: 100%;
+}
+@media (min-width: 60rem) {
+	.container {
+		max-width: var(--max-width-container);
+	}
 }
 
 /* @media (prefers-color-scheme: dark) {

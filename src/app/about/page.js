@@ -1,6 +1,6 @@
 import Topnav from '@/components/Topnav';
 import '../about.css';
-import me from '../../assets/images/me.png';
+import me from '../../assets/images/me.jpg';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -46,7 +46,7 @@ export default function About() {
 							<Link
 								// href="https://drive.google.com/file/d/1VN5PZaeya5kDyGRc_yTqUnxKGyiMlMcI/view?usp=sharing"
 								href="/about/resume"
-								// target="_blank"
+								target="_blank"
 								// rel="noreferrer"
 							>
 								<div className="aboutResumeBtn">Check out my Resume</div>

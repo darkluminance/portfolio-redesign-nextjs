@@ -21,6 +21,7 @@
 	.aboutMyPic img {
 		width: 80vw;
 		height: auto;
+		border-radius: 50%;
 	}
 
 	.aboutResume {

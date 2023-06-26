@@ -6,7 +6,7 @@
 	width: 100%;
 	height: auto;
 
-	position: fixed;
+	/* position: fixed; */
 
 	.homeItem {
 		margin-bottom: 0px;
@@ -38,6 +38,7 @@
 
 @media (min-width: 35rem) {
 	.homeLink {
+		position: fixed;
 		z-index: 999;
 		display: flex;
 		width: 0;
