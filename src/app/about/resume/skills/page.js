@@ -3,13 +3,14 @@
 import Topnav from '@/components/Topnav';
 import Image from 'next/image';
 import { useState } from 'react';
+
 import './skills.css';
+
 import c from '../../../../assets/images/skills/c.png';
 import cpp from '../../../../assets/images/skills/cpp.png';
 import java from '../../../../assets/images/skills/java.png';
 import kotlin from '../../../../assets/images/skills/kotlin.png';
 import python from '../../../../assets/images/skills/python.png';
-import dart from '../../../../assets/images/skills/dart.png';
 
 import html from '../../../../assets/images/skills/html.png';
 import css from '../../../../assets/images/skills/css.png';
@@ -138,12 +139,6 @@ export default function Skills() {
 									<Image src={nuxt}></Image>Nuxt.JS
 								</li>
 								<li>
-									<Image src={tailwind}></Image>TailWind.CSS
-								</li>
-								<li>
-									<Image src={flutter}></Image>Flutter
-								</li>
-								<li>
 									<Image src={node}></Image>Node.JS
 								</li>
 								<li>
@@ -154,6 +149,12 @@ export default function Skills() {
 								</li>
 								<li>
 									<Image src={springboot}></Image>SpringBoot
+								</li>
+								<li>
+									<Image src={tailwind}></Image>TailWind.CSS
+								</li>
+								<li>
+									<Image src={flutter}></Image>Flutter
 								</li>
 							</ul>
 						)}
@@ -179,6 +180,9 @@ export default function Skills() {
 									<Image src={unity}></Image>Unity
 								</li>
 								<li>
+									<Image src={blender}></Image>Blender
+								</li>
+								<li>
 									<Image src={figma}></Image>Figma
 								</li>
 								<li>
@@ -195,9 +199,6 @@ export default function Skills() {
 								</li>
 								<li>
 									<Image src={aftereffects}></Image>AfterEffects
-								</li>
-								<li>
-									<Image src={blender}></Image>Blender
 								</li>
 								<li>
 									<Image src={matlab}></Image>Matlab

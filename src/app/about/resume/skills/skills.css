@@ -1,5 +1,6 @@
 .skillCategories {
 	margin-block: 5rem;
+	padding-bottom: 2rem;
 	flex-wrap: wrap;
 	gap: 1rem;
 	text-transform: uppercase;
@@ -10,6 +11,15 @@
 		transition: 0.5s all ease;
 		width: 135px;
 		height: 33px;
+		opacity: 0.69;
+	}
+	.skillCategory:hover {
+		opacity: 1;
+		font-weight: bold;
+	}
+	.skillCategory.active {
+		opacity: 1;
+		font-weight: var(--fw-300);
 	}
 }
 
@@ -26,7 +36,6 @@
 	user-select: none;
 	transition: 1s all ease;
 }
-
 .skill li {
 	width: 135px;
 	height: 135px;
@@ -39,7 +48,9 @@
 	font-size: var(--fs-500);
 	font-weight: var(--fw-500);
 }
-
+.skill li:hover {
+	opacity: 0.69;
+}
 .skill li img {
 	width: auto;
 	height: 100%;
