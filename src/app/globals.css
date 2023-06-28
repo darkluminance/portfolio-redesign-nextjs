@@ -97,6 +97,11 @@ body {
 	letter-spacing: 0.08em;
 }
 
+::selection {
+	color: var(--primary-color);
+	background: var(--primary-dark-color);
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -144,6 +149,11 @@ button {
 	padding: 2rem;
 }
 
+@media (max-width: 35rem) {
+	.page {
+		padding-inline: 0;
+	}
+}
 /* @media (max-width: 60rem) {
 	.page {
 		padding: 2rem;
