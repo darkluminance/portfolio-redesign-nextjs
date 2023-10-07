@@ -4,14 +4,15 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import close from '@/assets/images/close.png';
+import '../app/photos.css';
 
-export default function Gallery() {
+export default function Design() {
 	const [photos, setPhotos] = useState([]);
 	const [thumbnailphotos, setThumbnailPhotos] = useState([]);
 	const [smallphotos, setsmallPhotos] = useState([]);
 
 	const originalURL =
-		'https://res.cloudinary.com/dwyosqxlr/image/list/gallery-xl.json';
+		'https://res.cloudinary.com/dwyosqxlr/image/list/design.json';
 
 	const fetchData = () => {
 		return axios.get(originalURL).then((response) => {
@@ -21,7 +22,7 @@ export default function Gallery() {
 			let thumbnailUrl = {};
 
 			data.forEach((element) => {
-				const key = element.public_id.slice(11);
+				const key = element.public_id.slice(7);
 
 				url[key] =
 					'https://res.cloudinary.com/dwyosqxlr/image/upload/v' +
@@ -48,7 +49,6 @@ export default function Gallery() {
 					element.format;
 			});
 
-			console.log(url, loaderUrl, thumbnailUrl);
 			setPhotos(url);
 			setThumbnailPhotos(thumbnailUrl);
 			setsmallPhotos(loaderUrl);
@@ -67,9 +67,8 @@ export default function Gallery() {
 	};
 
 	return (
-		<div className="galleryContainer ">
+		<div className="projectContainer ">
 			<div className={model ? 'model imgViewer flex-center-full' : 'model'}>
-				{/* <img src={tmpImgSrc} alt="" /> */}
 				<img src={tmpImgSrc} />
 				<Image
 					onClick={() => {
@@ -79,17 +78,15 @@ export default function Gallery() {
 					alt=""
 				/>
 			</div>
-			<div className="gallery">
+			<div className="project">
 				{Object.keys(smallphotos).map((key, index) => {
 					return (
 						<div
 							className="pics"
 							style={{ backgroundImage: 'url(' + smallphotos[key] + ')' }}
-							key={key}
+							key={index}
 							onClick={() => getImg(photos[key])}
 						>
-							{/* {image} */}
-							{/* <Image src={image} alt="" width={800} /> */}
 							<img src={thumbnailphotos[key]} alt="" loading="lazy" />
 						</div>
 					);

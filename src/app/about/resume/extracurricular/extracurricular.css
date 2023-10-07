@@ -1,0 +1,33 @@
+.Experiences {
+	margin-top: 4rem;
+}
+
+.Experience {
+	margin-block: 1rem 5rem;
+
+	.workTitle h2 {
+		font-size: var(--fs-500);
+		font-weight: var(--fw-400);
+
+		padding-bottom: 2rem;
+	}
+	.workDescription {
+		margin-left: 1rem;
+	}
+
+	.workDescription li {
+		list-style-type: disc;
+		line-height: 1.5;
+	}
+	.workDescription span {
+		font-weight: var(--fw-700);
+	}
+}
+
+/* @media (min-width: 60rem) {
+	.workExperience {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		gap: 1rem;
+	}
+} */
