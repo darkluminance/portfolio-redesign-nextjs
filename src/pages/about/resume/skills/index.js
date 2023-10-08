@@ -1,5 +1,3 @@
-'use client';
-
 import Topnav from '@/components/Topnav';
 import Image from 'next/image';
 import { useState } from 'react';
