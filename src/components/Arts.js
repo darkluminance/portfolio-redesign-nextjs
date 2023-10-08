@@ -18,9 +18,9 @@ export default function Arts() {
 		return axios.get(originalURL).then((response) => {
 			let data = response.data.resources;
 
-			data = data.sort(function (a, b) {
-				return -(a.created_at - b.created_at);
-			});
+			// data = data.sort(function (a, b) {
+			// 	return -(a.created_at - b.created_at);
+			// });
 
 			let url = {};
 			let loaderUrl = {};

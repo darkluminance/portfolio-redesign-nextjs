@@ -32,7 +32,9 @@ export default function Page({ params }) {
 								<span>{project.title}</span>
 							</div>
 							<div className="projectContent">
-								<div className="projectDescription">{project.description}</div>
+								<div className="projectDescription">
+									"{project.description}"
+								</div>
 
 								<div className="projectInfos">
 									<div>

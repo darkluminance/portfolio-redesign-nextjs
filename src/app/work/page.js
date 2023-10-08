@@ -15,7 +15,7 @@ export default function Work() {
 		<>
 			<Topnav></Topnav>
 			<div className="page flex-center-hor">
-				<div className="container">
+				<div className="container workContainer">
 					<h1 className="pageHeader" style={{ width: '100%' }}>
 						My Projects
 					</h1>
@@ -51,7 +51,7 @@ export default function Work() {
 							}
 							onClick={() => setActiveCategory(2)}
 						>
-							Art
+							Digital Art
 						</li>
 					</ul>
 					{activeCategory == 0 && <Projects></Projects>}
