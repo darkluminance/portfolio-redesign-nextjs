@@ -14,7 +14,9 @@ export default function Experience() {
 								<h2 className="workPlace">RedDot Digital</h2>
 							</div>
 							<div className="workDescription">
-								<div className="workDesignation">Software Developer</div>
+								<div className="workDesignation">
+									Software Developer, FinTech core solutions
+								</div>
 								<div className="workPeriod">March 2023 - present</div>
 								<ul className="workProject">
 									<li>
@@ -24,14 +26,11 @@ export default function Experience() {
 										</h3>
 										<ul className="workProjectTasks">
 											<li className="workProjectTask">
-												Designing and developing a payment gateway page for the
-												bank using <span>NuxtJS</span>.
+												Designing and developing a payment gateway page using{' '}
+												<span>NuxtJS</span>.
 											</li>
 											<li className="workProjectTask">
 												Connecting the system with the backend API.
-											</li>
-											<li className="workProjectTask">
-												Designing the UI for the DFS Mobile App.
 											</li>
 											<li className="workProjectTask">
 												Adding file download features in the Report Portal using{' '}
@@ -39,7 +38,7 @@ export default function Experience() {
 												.
 											</li>
 											<li className="workProjectTask">
-												Furnishing the frontend of the Report Portal.
+												Revamping the UI of the Report Portal.
 											</li>
 											<li className="workProjectTask">
 												Working with documentations.
