@@ -1,10 +1,10 @@
 import Topnav from '@/components/Topnav';
 import Gallery from '@/components/Gallery';
-import '../../photos.css';
+import Page from '@/components/page';
 
 export default function Photography() {
 	return (
-		<>
+		<Page>
 			<Topnav routeLink="/about" routeName="ABOUT"></Topnav>
 			<div className="page photographyPage flex-center-hor">
 				<div className="pageContent">
@@ -17,15 +17,7 @@ export default function Photography() {
 					</div>
 					<Gallery></Gallery>
 				</div>
-				{/* <div
-					className="footer"
-					onClick={() => {
-						window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-					}}
-				>
-					Go to top
-				</div> */}
 			</div>
-		</>
+		</Page>
 	);
 }

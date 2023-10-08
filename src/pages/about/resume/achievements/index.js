@@ -1,10 +1,10 @@
+import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
 import Link from 'next/link';
-import '../extracurricular/extracurricular.css';
 
 export default function Achievements() {
 	return (
-		<>
+		<Page>
 			<Topnav routeLink={'/about/resume'} routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
@@ -63,6 +63,6 @@ export default function Achievements() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

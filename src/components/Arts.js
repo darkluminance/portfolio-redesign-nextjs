@@ -4,7 +4,6 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import close from '@/assets/images/close.png';
-import '../app/photos.css';
 
 export default function Arts() {
 	const [photos, setPhotos] = useState([]);

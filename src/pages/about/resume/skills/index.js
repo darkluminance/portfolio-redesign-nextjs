@@ -4,8 +4,6 @@ import Topnav from '@/components/Topnav';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import './skills.css';
-
 import c from '../../../../assets/images/skills/c.png';
 import cpp from '../../../../assets/images/skills/cpp.png';
 import java from '../../../../assets/images/skills/java.png';
@@ -41,12 +39,13 @@ import aftereffects from '../../../../assets/images/skills/aftereffects.png';
 import blender from '../../../../assets/images/skills/blender.png';
 import matlab from '../../../../assets/images/skills/matlab.png';
 import github from '../../../../assets/images/skills/github.png';
+import Page from '@/components/page';
 
 export default function Skills() {
 	let [activeCategory, setActiveCategory] = useState(0);
 
 	return (
-		<>
+		<Page>
 			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
@@ -211,6 +210,6 @@ export default function Skills() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

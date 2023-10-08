@@ -194,3 +194,25 @@ button {
 		color-scheme: dark;
 	}
 } */
+
+.slide-in {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--primary-dark-color);
+	transform-origin: bottom;
+	z-index: 99999;
+}
+
+.slide-out {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--primary-dark-color);
+	transform-origin: top;
+	z-index: 99999;
+}

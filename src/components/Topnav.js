@@ -1,6 +1,5 @@
 import Ryelogo from './Ryelogo';
 import Link from 'next/link';
-import '../app/topnav.css';
 
 const Topnav = ({ routeLink, routeName }) => {
 	return (

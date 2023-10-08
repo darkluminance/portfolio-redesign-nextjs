@@ -1,9 +1,8 @@
+import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
-import './experience.css';
-
 export default function Experience() {
 	return (
-		<>
+		<Page>
 			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
@@ -84,6 +83,6 @@ export default function Experience() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

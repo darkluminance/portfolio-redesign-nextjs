@@ -1,10 +1,10 @@
+import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
-import './extracurricular.css';
 
 export default function Extracurricular() {
 	return (
-		<>
-			<Topnav routeLink="./about/resume" routeName="RESUME"></Topnav>
+		<Page>
+			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
 					<h1 className="pageHeader">Raiyan's Extra Curricular Activites</h1>
@@ -45,6 +45,6 @@ export default function Extracurricular() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

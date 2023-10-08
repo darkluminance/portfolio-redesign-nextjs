@@ -1,28 +1,30 @@
-'use client';
 import axios from 'axios';
 
 import Topnav from '@/components/Topnav';
-import '../../work.css';
-import '../../about/resume/skills/skills.css';
+import Page from '@/components/page';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-export default function Page({ params }) {
+export default function Paage() {
+	const router = useRouter();
 	const [project, setproject] = useState([]);
 
 	const projectDataURL =
 		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects/';
 
 	const fetchData = () => {
-		return axios.get(projectDataURL + params.id + '.json').then((response) => {
-			setproject(response.data);
-		});
+		return axios
+			.get(projectDataURL + router.query.id + '.json')
+			.then((response) => {
+				setproject(response.data);
+			});
 	};
 
 	useEffect(() => {
 		fetchData();
 	}, []);
 	return (
-		<>
+		<Page>
 			<Topnav routeLink="/work" routeName="WORK"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container flex-center-hor">
@@ -74,6 +76,6 @@ export default function Page({ params }) {
 					)}
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

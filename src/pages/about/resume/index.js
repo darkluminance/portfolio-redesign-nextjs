@@ -1,10 +1,10 @@
+import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
 import Link from 'next/link';
-import './resume.css';
 
 export default function Resume() {
 	return (
-		<>
+		<Page>
 			<Topnav routeLink="/about" routeName="ABOUT"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="resumeContainer">
@@ -46,6 +46,6 @@ export default function Resume() {
 					</ul>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

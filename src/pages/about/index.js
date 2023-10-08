@@ -1,12 +1,12 @@
 import Topnav from '@/components/Topnav';
-import '../about.css';
 import me from '../../assets/images/me.jpg';
 import Link from 'next/link';
 import Image from 'next/image';
+import Page from '@/components/page';
 
 export default function About() {
 	return (
-		<>
+		<Page>
 			<Topnav></Topnav>
 			<div className="page aboutPage flex-center-hor">
 				<div className="aboutContainer">
@@ -68,6 +68,6 @@ export default function About() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

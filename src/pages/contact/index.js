@@ -1,9 +1,9 @@
+import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
-import '../contact.css';
 
 export default function Contact() {
 	return (
-		<>
+		<Page>
 			<Topnav></Topnav>
 			<div className="contactItems ">
 				<div className="contactHeader">
@@ -77,6 +77,6 @@ export default function Contact() {
 					</div>
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

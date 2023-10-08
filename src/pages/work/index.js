@@ -1,18 +1,15 @@
-'use client';
-
 import Topnav from '@/components/Topnav';
 import Projects from '@/components/Projects';
 import Design from '@/components/Design';
 import Arts from '@/components/Arts';
-import '../work.css';
-import '../about/resume/skills/skills.css';
 import { useState } from 'react';
+import Page from '@/components/page';
 
 export default function Work() {
 	let [activeCategory, setActiveCategory] = useState(0);
 
 	return (
-		<>
+		<Page>
 			<Topnav></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container workContainer">
@@ -59,6 +56,6 @@ export default function Work() {
 					{activeCategory == 2 && <Arts></Arts>}
 				</div>
 			</div>
-		</>
+		</Page>
 	);
 }

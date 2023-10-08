@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Ryelogo from './Ryelogo';
-import '../app/topbar.css';
 
 export default function Topbar() {
 	return (
