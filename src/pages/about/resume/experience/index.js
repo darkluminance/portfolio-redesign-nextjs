@@ -6,7 +6,7 @@ export default function Experience() {
 			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
-					{/* <h1 className="pageHeader">Raiyan's Work Experience</h1> */}
+					{/* <h1 className="pageHeader">Experience</h1> */}
 
 					<div className="workExperiences">
 						<div className="workExperience">

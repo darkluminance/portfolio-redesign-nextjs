@@ -1,6 +1,5 @@
 import Page from '@/components/page';
 import Topnav from '@/components/Topnav';
-import Link from 'next/link';
 
 export default function Hobbies() {
 	return (

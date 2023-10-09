@@ -35,6 +35,17 @@ export default function About() {
 							achievement in releasing one of the first indie fan-made Pokémon
 							games in Bangladesh at the age of 19.
 						</p>
+						<div className="aboutResume">
+							<div className="aboutMyPhotographyBtn">
+								<Link
+									href="/about/resume"
+									className="text-link"
+									style={{ textDecoration: 'underline' }}
+								>
+									<span>More about me</span>
+								</Link>
+							</div>
+						</div>
 					</div>
 					<div className="aboutSideContent">
 						<div className="aboutMyPic">
@@ -45,7 +56,7 @@ export default function About() {
 									</NavLink> */}
 							<Link
 								// href="https://drive.google.com/file/d/1VN5PZaeya5kDyGRc_yTqUnxKGyiMlMcI/view?usp=sharing"
-								href="/about/resume"
+								href="/about/cv"
 								target="_blank"
 								// rel="noreferrer"
 							>

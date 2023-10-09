@@ -7,7 +7,7 @@ export default function Extracurricular() {
 			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
-					<h1 className="pageHeader">Raiyan's Extra Curricular Activites</h1>
+					<h1 className="pageHeader">Extra Curricular</h1>
 
 					<div className="Experiences">
 						<div className="Experience">

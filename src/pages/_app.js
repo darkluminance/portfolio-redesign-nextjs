@@ -14,6 +14,7 @@ import './extracurricular.css';
 import './resume.css';
 import './skills.css';
 import './hobbies.css';
+import './cv.css';
 
 export default function App({ Component, pageProps }) {
 	const router = useRouter();

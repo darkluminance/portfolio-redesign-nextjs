@@ -109,9 +109,18 @@ a {
 	font-weight: var(--fw-700);
 	letter-spacing: normal;
 }
+
 .text-link:hover {
+	text-decoration: underline;
+}
+.text-link:not(.contactLinkItem .text-link):hover {
 	/* opacity: 0.69; */
-	color: var(--accent-color);
+	/* color: var(--accent-color); */
+	font-style: italic;
+}
+.homeItem .text-link:hover {
+	font-style: normal !important;
+	font-weight: var(--fw-400) !important;
 }
 
 .underlined {
