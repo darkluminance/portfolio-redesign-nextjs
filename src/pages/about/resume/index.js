@@ -8,7 +8,7 @@ export default function Resume() {
 			<Topnav routeLink="/about" routeName="ABOUT"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="resumeContainer">
-					<h1 className="pageHeader">Raiyan's Resume</h1>
+					<h1 className="pageHeader">Portfolio</h1>
 					<ul className="resumeItems">
 						<Link
 							className="resumeItem flex-center-full"

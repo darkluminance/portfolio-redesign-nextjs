@@ -13,6 +13,7 @@ export default function Paage() {
 		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects/';
 
 	const fetchData = () => {
+		console.log(router);
 		return axios
 			.get(projectDataURL + router.query.id + '.json')
 			.then((response) => {
@@ -27,54 +28,74 @@ export default function Paage() {
 		<Page>
 			<Topnav routeLink="/work" routeName="WORK"></Topnav>
 			<div className="page flex-center-hor">
-				<div className="container flex-center-hor">
-					{project.stack && (
-						<div className="projectItemContainer">
-							<div className="projectTitle flex-center-full">
-								<span>{project.title}</span>
-							</div>
-							<div className="projectContent">
-								<div className="projectDescription">
-									"{project.description}"
+				{project && (
+					<div className="container flex-center-hor">
+						{project.stack && (
+							<div className="projectItemContainer">
+								<div className="projectTitle flex-center-full">
+									<span>{project.title}</span>
 								</div>
+								<div className="projectContent">
+									<div className="projectDescription">
+										"{project.description}"
+									</div>
 
-								<div className="projectInfos">
-									<div>
-										<div className="projectYearTitle">Year:</div>{' '}
-										<span className="projectYear">{project.year}</span>
-									</div>
-									<div>
-										<div className="projectYearTitle">Stack:</div>{' '}
-										<span className="projectStack">
-											{project.stack.map((item, index) => (
-												<span key={index}>
-													{item}
-													{index !== project.stack.length - 1 ? ', ' : ''}
-												</span>
-											))}
-										</span>
-									</div>
-									<div>
-										<div className="projectYearTitle">Github:</div>{' '}
-										{project.url && (
-											<span className="projectYear">
-												<a
-													href={project.url}
-													target="_blank"
-													rel="noreferrer"
-													className="text-link"
-												>
-													{project.url}
-												</a>
+									<div className="projectInfos">
+										<div>
+											<div className="projectYearTitle">Year:</div>{' '}
+											<span className="projectYear">{project.year}</span>
+										</div>
+										<div>
+											<div className="projectYearTitle">Stack:</div>{' '}
+											<span className="projectStack">
+												{project.stack.map((item, index) => (
+													<span key={index}>
+														{item}
+														{index !== project.stack.length - 1 ? ', ' : ''}
+													</span>
+												))}
 											</span>
-										)}
-										{!project.url && <span>N/A</span>}
+										</div>
+										<div>
+											<div className="projectYearTitle">Github:</div>{' '}
+											{project.url && (
+												<span className="projectYear">
+													<a
+														href={project.url}
+														target="_blank"
+														rel="noreferrer"
+														className="text-link italic"
+													>
+														{project.url}
+													</a>
+												</span>
+											)}
+											{!project.url && <span>N/A</span>}
+										</div>
+									</div>
+									<div className="projectInfos" style={{ marginTop: '3rem' }}>
+										<div>
+											{project.demo && (
+												<div>
+													<span className="projectYear">
+														<a
+															href={project.demo}
+															target="_blank"
+															rel="noreferrer"
+															className="text-link italic"
+														>
+															Click to view Demo
+														</a>
+													</span>
+												</div>
+											)}
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					)}
-				</div>
+						)}
+					</div>
+				)}
 			</div>
 		</Page>
 	);

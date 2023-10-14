@@ -8,7 +8,7 @@ export default function Achievements() {
 			<Topnav routeLink={'/about/resume'} routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container">
-					<h1 className="pageHeader">Raiyan's Competitions and Achievements</h1>
+					<h1 className="pageHeader">Competitions and Achievements</h1>
 
 					<div className="Experiences">
 						<div className="Experience">

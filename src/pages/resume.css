@@ -8,18 +8,19 @@
 		user-select: none;
 
 		.resumeItem {
-			border: 1px solid var(--primary-dark-color);
+			border: 1px solid var(--primary-dark-color-border);
+			border-radius: var(--border-radius);
 			padding-block: 5rem;
 		}
 		.resumeItem {
 			font-size: var(--fs-500);
-			font-weight: var(--fw-500);
+			font-weight: var(--fw-300);
 			text-align: center;
 		}
 		.resumeItem:hover {
-			border-color: var(--accent-color);
-			color: var(--accent-color);
-			font-weight: var(--fw-700);
+			font-weight: var(--fw-500);
+			box-shadow: 0 4px 13px rgba(0, 0, 0, 0.33);
+			transition: transform 0.69s;
 		}
 	}
 }

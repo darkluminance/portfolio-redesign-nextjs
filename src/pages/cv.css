@@ -18,21 +18,12 @@
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 3rem;
-
-	.contactWebsite,
-	.contactEmail {
-		letter-spacing: 0.069em;
-		font-weight: var(--fw-400);
-		display: inline-block;
-	}
-
-	.contactWebsite {
-		padding-right: 8px;
-		border-right: 1px solid var(--primary-dark-color);
-	}
-	.contactEmail {
-		padding-left: 8px;
-	}
+	gap: 1rem;
+}
+.cvContact a {
+	letter-spacing: 0.069em;
+	font-weight: var(--fw-400) !important;
+	display: inline-block;
 }
 .cvContact a:hover .link {
 	text-decoration: underline;
@@ -40,15 +31,20 @@
 }
 
 .cvContents {
-	column-width: 20em;
-	column-gap: 8rem;
+	/* column-width: 20em;
+	column-gap: 8rem; */
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8rem;
+
 	/* min-height: 130vh; */
 	line-height: 22px;
 	letter-spacing: 0.1em;
 
 	.cvContent {
 		/* min-height: 420px; */
-		margin-bottom: 2rem;
+		margin-block: 2rem;
 
 		.contentItems {
 			.contentItem {
@@ -127,7 +123,7 @@
 	}
 }
 
-.projectTasks li {
+.cvContents li {
 	list-style: disc;
 }
 
@@ -165,7 +161,7 @@
 		.contentTitle {
 			position: relative;
 			left: -60%;
-			top: 9rem;
+			top: 11.5rem;
 			justify-content: center;
 
 			-webkit-transform: rotate(-90deg);
@@ -179,7 +175,7 @@
 			width: 69px;
 			height: 1px;
 			background-color: var(--primary-dark-color);
-			margin-left: 13rem;
+			margin-left: 18rem;
 		}
 	}
 }

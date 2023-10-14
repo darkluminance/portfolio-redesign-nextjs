@@ -8,18 +8,18 @@
 		user-select: none;
 
 		.hobbyItem {
-			border: 1px solid var(--primary-dark-color);
+			border: 1px solid var(--primary-dark-color-border);
+			border-radius: var(--border-radius);
 			padding-block: 5rem;
 		}
 		.hobbyItem {
 			font-size: var(--fs-500);
-			font-weight: var(--fw-500);
+			font-weight: var(--fw-300);
 			text-align: center;
 		}
 		.hobbyItem:hover {
-			/* border-color: var(--accent-color);
-			color: var(--accent-color); */
-			font-weight: var(--fw-700);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+			transition: transform 0.2s;
 		}
 	}
 }

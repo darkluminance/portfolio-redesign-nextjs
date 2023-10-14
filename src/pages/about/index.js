@@ -39,10 +39,23 @@ export default function About() {
 							<div className="aboutMyPhotographyBtn">
 								<Link
 									href="/about/resume"
-									className="text-link"
+									className="text-link italic"
 									style={{ textDecoration: 'underline' }}
 								>
 									<span>More about me</span>
+								</Link>
+							</div>
+						</div>
+						<div className="aboutResume">
+							<div className="aboutMyPhotographyBtn">
+								{/* <NavLink to="/resume">
+									</NavLink> */}
+								<Link
+									href="/about/photography"
+									className="text-link italic"
+									style={{ textDecoration: 'underline' }}
+								>
+									<span>Check out my Photographs</span>
 								</Link>
 							</div>
 						</div>
@@ -62,19 +75,6 @@ export default function About() {
 							>
 								<div className="aboutResumeBtn">Check out my Resume</div>
 							</Link>
-						</div>
-						<div className="aboutResume">
-							<div className="aboutMyPhotographyBtn">
-								{/* <NavLink to="/resume">
-									</NavLink> */}
-								<Link
-									href="/about/photography"
-									className="text-link"
-									style={{ textDecoration: 'underline' }}
-								>
-									<span>Check out my Photographs</span>
-								</Link>
-							</div>
 						</div>
 					</div>
 				</div>

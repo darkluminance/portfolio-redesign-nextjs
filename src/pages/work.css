@@ -1,11 +1,11 @@
 .workContainer {
-	width: 80vw;
-	max-width: 2000px !important;
+	width: 69vw;
+	max-width: 1600px !important;
 }
 .project {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
+	gap: 2rem;
 	text-transform: uppercase;
 
 	.pics {

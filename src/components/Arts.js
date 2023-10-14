@@ -15,10 +15,6 @@ export default function Arts() {
 		return axios.get(originalURL).then((response) => {
 			let data = response.data.resources;
 
-			// data = data.sort(function (a, b) {
-			// 	return -(a.created_at - b.created_at);
-			// });
-
 			let url = {};
 			let loaderUrl = {};
 			let thumbnailUrl = {};
@@ -43,7 +39,7 @@ export default function Arts() {
 					element.format;
 
 				thumbnailUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_1024/v' +
+					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_800/v' +
 					element.version +
 					'/' +
 					element.public_id +

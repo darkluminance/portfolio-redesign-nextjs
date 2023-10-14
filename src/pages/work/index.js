@@ -14,7 +14,7 @@ export default function Work() {
 			<div className="page flex-center-hor">
 				<div className="container workContainer">
 					<h1 className="pageHeader" style={{ width: '100%' }}>
-						My Projects
+						My Works
 					</h1>
 					<ul
 						className="skillCategories flex-center-hor"
