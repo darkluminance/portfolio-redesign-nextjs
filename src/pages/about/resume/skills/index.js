@@ -46,7 +46,7 @@ export default function Skills() {
 		<Page>
 			<Topnav routeLink="/about/resume" routeName="RESUME"></Topnav>
 			<div className="page flex-center-hor">
-				<div className="container">
+				<div className="container skillContainer">
 					{/* <h1 className="pageHeader">Raiyan's Skills</h1> */}
 					<ul className="skillCategories flex-center-hor">
 						<li

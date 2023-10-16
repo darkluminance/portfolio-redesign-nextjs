@@ -96,7 +96,6 @@
 @media (max-width: 60rem) {
 	.gallery {
 		grid-template-columns: 1fr 1fr;
-		width: 85vw;
 	}
 }
 

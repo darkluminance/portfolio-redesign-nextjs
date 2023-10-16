@@ -34,10 +34,6 @@
 	/* column-width: 20em;
 	column-gap: 8rem; */
 
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 8rem;
-
 	/* min-height: 130vh; */
 	line-height: 22px;
 	letter-spacing: 0.1em;
@@ -108,7 +104,8 @@
 
 			.experience:not(:last-child)::after {
 				content: ' ';
-				position: absolute;
+				position: relative;
+				display: block;
 				width: 69px;
 				height: 2px;
 				background-color: var(--primary-dark-color);
@@ -177,5 +174,37 @@
 			background-color: var(--primary-dark-color);
 			margin-left: 18rem;
 		}
+	}
+}
+
+@media (max-width: 75rem) {
+	.cvContent {
+		display: block !important;
+	}
+}
+
+@media (min-width: 65rem) {
+	.cvContents {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8rem;
+	}
+}
+
+@media (max-width: 45rem) {
+	.cvContainer {
+		width: 88vw !important;
+	}
+	.cvHeader {
+		font-size: var(--fs-700) !important;
+		font-weight: var(--fw-600) !important;
+	}
+	.cvContent {
+		font-size: var(--fs-200) !important;
+	}
+	.projecttitle,
+	.itemPlace {
+		font-size: var(--fs-300) !important;
+		font-weight: var(--fw-400) !important;
 	}
 }

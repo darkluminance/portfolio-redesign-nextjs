@@ -138,11 +138,11 @@
 @media (max-width: 60rem) {
 	.project {
 		grid-template-columns: 1fr 1fr;
-		width: 85vw;
+		/* width: 85vw; */
 	}
 	.projectItemContainer {
 		margin-top: 13%;
-		width: 100%;
+		width: 100% !important;
 	}
 	.projectDescription {
 		font-size: var(--fs-700) !important;
@@ -156,15 +156,31 @@
 }
 
 @media (max-width: 45rem) {
+	.workContainer {
+		width: 88vw !important;
+	}
+
 	.project {
 		grid-template-columns: 1fr;
 		padding: 0;
 	}
 	.projectItemContainer {
-		margin-top: 18%;
-		margin-inline: 5%;
-		width: -webkit-fill-available;
+		margin-top: 21%;
+		margin-inline: 0%;
+		width: 100vw !important;
 		left: 0;
+	}
+
+	.projectContent {
+		padding: 1rem !important;
+	}
+
+	.projectYear {
+		display: block;
+		width: 250px !important;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	.projectInfos {
@@ -179,6 +195,5 @@
 	.arts {
 		column-count: 1;
 		padding: 0;
-		margin-left: 5%;
 	}
 }

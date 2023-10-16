@@ -167,6 +167,9 @@ button {
 	align-items: center;
 	justify-content: center;
 }
+.flex-wrap {
+	flex-wrap: wrap;
+}
 
 .fw-300 {
 	font-weight: var(--fw-300) !important;
@@ -204,6 +207,10 @@ button {
 	margin-top: 4rem !important;
 }
 
+.op-69 {
+	opacity: 0.69 !important;
+}
+
 .page {
 	margin-bottom: 2rem;
 	padding: 2rem;
@@ -213,12 +220,48 @@ button {
 	.page {
 		padding-inline: 0;
 	}
-}
-/* @media (max-width: 60rem) {
-	.page {
-		padding: 2rem;
+
+	.navList {
+		gap: 1rem !important;
+		flex-direction: column !important;
 	}
-} */
+}
+@media (max-width: 45rem) {
+	body {
+		padding: 0;
+	}
+
+	.topNav,
+	.aboutPage,
+	.homepage,
+	.resumeContainer,
+	.photographyPage,
+	.workExperiences {
+		padding: 2rem !important;
+	}
+	.contactItems {
+		padding: 0.75rem !important;
+	}
+
+	.aboutContainer #p1 {
+		font-size: var(--fs-400) !important;
+	}
+
+	.workExperiences .workTitle h2 {
+		font-size: var(--fs-700) !important;
+	}
+	.workExperiences .workDesignation {
+		font-size: var(--fs-500) !important;
+	}
+	.workExperiences .workProject h3 {
+		font-size: var(--fs-300) !important;
+	}
+}
+.resumeContainer ul,
+.skillContainer ul,
+.workContainer ul {
+	margin-left: 0;
+}
 
 .pageHeader {
 	margin-bottom: 1.5rem;

@@ -83,7 +83,7 @@ export default function CV() {
 													</div>
 													<div className="experienceTitle flex-row">
 														<span>{item.position}</span>{' '}
-														<span>
+														<span className="op-69">
 															({item.joined} - {item.left})
 														</span>
 													</div>
@@ -155,19 +155,22 @@ export default function CV() {
 											Military Institute of Science and Technology
 										</div>
 										<div className="experienceTitle">
-											Computer Science and Engineering (2019 - 2023)
+											Computer Science and Engineering{' '}
+											<span className="op-69">(2019 - 2023)</span>
 										</div>
 									</div>
 									<div className="contentItem">
 										<div className=" itemPlace">Rajuk Uttara Model College</div>
 										<div className="experienceTitle">
-											Higher Secondary, Faculty of Sciences (2016 - 2018)
+											Higher Secondary, Faculty of Sciences{' '}
+											<span className="op-69">(2016 - 2018)</span>
 										</div>
 									</div>
 									<div className="contentItem">
 										<div className=" itemPlace">Rajuk Uttara Model College</div>
 										<div className="experienceTitle">
-											Secondary School, Faculty of Sciences (2014 - 2016)
+											Secondary School, Faculty of Sciences{' '}
+											<span className="op-69">(2014 - 2016)</span>
 										</div>
 									</div>
 								</div>
@@ -185,7 +188,7 @@ export default function CV() {
 												<div key={index} className="contentItem projectitem">
 													<div className="projecttitle flex-row">
 														<span>{item.title}</span>
-														<span>- {item.year}</span>
+														<span className="fw-300 op-69">- {item.year}</span>
 													</div>
 													<div className="projectstacks flex-row">
 														{Object.values(item.stack).map((stack, i) => {
@@ -214,9 +217,11 @@ export default function CV() {
 											return (
 												<div className="contentItem">
 													<div>
-														<div className="projecttitle flex-row">
+														<div className="projecttitle flex-row flex-wrap">
 															<span>{item.place}</span>
-															<span>- {item.year}</span>
+															<span className="op-69 fw-300">
+																- {item.year}
+															</span>
 														</div>
 														<ul className="mt-1r">
 															{Object.values(item.points).map(function (point) {
@@ -245,7 +250,7 @@ export default function CV() {
 																	{achievement.place} place
 																</span>
 																: {achievement.competition}{' '}
-																<span className="fw-500">
+																<span className="op-69">
 																	-{achievement.year}
 																</span>
 															</li>
