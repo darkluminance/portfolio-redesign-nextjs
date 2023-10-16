@@ -41,7 +41,7 @@ export default function Resume() {
 							className="resumeItem flex-center-full"
 							href="/about/resume/hobbies"
 						>
-							<li>Hobbies</li>
+							<li>Interests</li>
 						</Link>
 					</ul>
 				</div>
