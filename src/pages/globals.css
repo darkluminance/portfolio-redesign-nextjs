@@ -231,9 +231,9 @@ button {
 		padding: 0;
 	}
 
-	/* {
+	.skillContainer {
 		padding: 2rem !important;
-	} */
+	}
 	.homepage,
 	.resumeContainer,
 	.photographyPage,
