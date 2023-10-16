@@ -231,16 +231,19 @@ button {
 		padding: 0;
 	}
 
-	.topNav,
-	.aboutPage,
+	/* {
+		padding: 2rem !important;
+	} */
 	.homepage,
 	.resumeContainer,
 	.photographyPage,
-	.workExperiences {
-		padding: 2rem !important;
-	}
-	.contactItems {
-		padding: 0.75rem !important;
+	.topNav,
+	.contactItems,
+	.hobbyContainer,
+	.achievementsContainer,
+	.workExperiences,
+	.extraCurricularContainer {
+		padding: 1rem !important;
 	}
 
 	.aboutContainer #p1 {
@@ -259,7 +262,8 @@ button {
 }
 .resumeContainer ul,
 .skillContainer ul,
-.workContainer ul {
+.workContainer ul,
+.hobbyContainer ul {
 	margin-left: 0;
 }
 

@@ -77,3 +77,8 @@
 		width: 80vw !important;
 	}
 }
+@media (max-width: 45rem) {
+	.aboutTextContent {
+		max-width: 95vw !important;
+	}
+}
