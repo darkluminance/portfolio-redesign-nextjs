@@ -4,6 +4,11 @@
 	font-size: var(--fs-300);
 	font-weight: var(--fw-400);
 }
+.cvpage {
+	overflow-y: hidden;
+	margin-bottom: 2rem;
+}
+
 .cvHeader {
 	font-size: var(--fs-900);
 	font-weight: var(--fw-600);
@@ -119,6 +124,9 @@
 		/* padding-bottom: 14rem; */
 	}
 }
+.cvAchievements {
+	min-height: 300px;
+}
 
 .cvContents li {
 	list-style: disc;
@@ -137,7 +145,7 @@
 	transition: opacity 0.5s ease;
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 45rem) {
 	.cvContent {
 		/* position: relative; */
 		/* position: fixed;

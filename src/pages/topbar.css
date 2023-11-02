@@ -17,9 +17,10 @@
 		.navList {
 			/* gap: 1rem; */
 			padding: 1rem;
+			font-size: var(--fs-700);
 
 			.navList-Item {
-				width: 6rem;
+				width: 69vw;
 				text-align: center;
 				padding-inline: 8px;
 			}
@@ -27,7 +28,7 @@
 	}
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 35rem) {
 	.topbar {
 		.navItems {
 			position: relative;
@@ -36,6 +37,7 @@
 			.navList {
 				gap: 2rem;
 				padding: 0;
+				font-size: var(--fs-300);
 
 				.navList-Item {
 					width: auto;

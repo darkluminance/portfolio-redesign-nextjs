@@ -15,6 +15,7 @@ import './resume.css';
 import './skills.css';
 import './hobbies.css';
 import './cv.css';
+import './todolist.css';
 
 export default function App({ Component, pageProps }) {
 	const router = useRouter();

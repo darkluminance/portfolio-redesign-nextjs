@@ -50,7 +50,7 @@ export default function CV() {
 
 	return (
 		<Page>
-			<div className="page flex-center-hor">
+			<div className="page flex-center-hor cvpage">
 				<div className="cvContainer">
 					<div className="cvHeader">Raiyan Abrar</div>
 					<div className="cvTitle">Software Engineer</div>
@@ -209,7 +209,7 @@ export default function CV() {
 							</div>
 							<div className="cvExtraCurriculars cvContent mt-4r">
 								<div className="contentTitle flex-row flex-center-ver">
-									<span>Extra-Curricular</span>
+									<span>Co-Curricular</span>
 								</div>
 								<div className="contentItems">
 									{extracurricular &&
