@@ -15,7 +15,10 @@ import './resume.css';
 import './skills.css';
 import './hobbies.css';
 import './cv.css';
+// Project releases
 import './todolist.css';
+import './dropdown.css';
+import './sorting.css';
 
 export default function App({ Component, pageProps }) {
 	const router = useRouter();
