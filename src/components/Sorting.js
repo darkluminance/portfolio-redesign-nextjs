@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import Dropdown from '@/components/Dropdown/Dropdown';
-import { bubbleSortAlgorithm } from '../Algorithms/BubbleSort.js';
-import { quickSortAlgorithm } from '../Algorithms/QuickSort.js';
+import { bubbleSortAlgorithm } from '@/Algorithms/BubbleSort.js';
+import { quickSortAlgorithm } from '@/Algorithms/QuickSort.js';
 
 function Sorting() {
 	let theArray = [];
