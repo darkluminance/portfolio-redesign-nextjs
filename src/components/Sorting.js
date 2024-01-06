@@ -3,11 +3,20 @@ import { useState, useEffect } from 'react';
 import Dropdown from '@/components/Dropdown/Dropdown';
 import { bubbleSortAlgorithm } from '@/Algorithms/BubbleSort.js';
 import { quickSortAlgorithm } from '@/Algorithms/QuickSort.js';
+import { mergeSortAlgorithm } from '@/Algorithms/MergeSort.js';
 
 function Sorting() {
 	let theArray = [];
 	let stateArray = [];
-	let colors = ['#00b894', '#0984e3', '#fd79a8', '#00e8e2', '#fdcb6e'];
+	let colors = [
+		'#00b894',
+		'#0984e3',
+		'#fd79a8',
+		'#00e8e2',
+		'#fdcb6e',
+		'#6c5ce7',
+		'#e17055',
+	];
 	let [array, setArray] = useState(theArray);
 	let [statearray, setstateArray] = useState(stateArray);
 	let [ARRAYSIZE, setArraySize] = useState(10);
@@ -101,6 +110,17 @@ function Sorting() {
 					sleepTime
 				);
 				break;
+			case 3:
+				mergeSortAlgorithm(
+					array,
+					stateArray,
+					setstateArray,
+					setArray,
+					showSorted,
+					delay,
+					sleepTime
+				);
+				break;
 
 			default:
 				break;
@@ -164,7 +184,7 @@ function Sorting() {
 						'-- Select sorting algorithm --',
 						'Bubble Sort',
 						'Quick Sort',
-						// 'Merge Sort',
+						'Merge Sort',
 						// 'Selection Sort',
 						// 'Heap Sort',
 						// 'Bucket Sort',
