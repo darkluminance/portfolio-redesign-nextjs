@@ -11,6 +11,11 @@ export const quickSortAlgorithm = async (
 
 	// Function to partition the array and return the partition index
 	async function partition(arr, low, high) {
+		stateArray = [...stateArray];
+		stateArray[low] = 2;
+		stateArray[high] = 2;
+		setstateArray(stateArray);
+		await delay(sleepTime);
 		// console.log('Partitioning ' + low + ' ' + high);
 		// Choosing the pivot
 		let pivotIndex = high;
@@ -19,14 +24,10 @@ export const quickSortAlgorithm = async (
 		stateArray[pivotIndex] = 3;
 		setstateArray(stateArray);
 		await delay(sleepTime);
-		await delay(sleepTime);
 		// console.log('Pivot set to ' + high);
-
 		stateArray = [...stateArray];
-		stateArray[low] = 2;
 		stateArray[high] = 2;
 		setstateArray(stateArray);
-		await delay(sleepTime);
 		await delay(sleepTime);
 
 		// Index of smaller element and indicates the right position of pivot found so far
@@ -47,8 +48,13 @@ export const quickSortAlgorithm = async (
 				await delay(sleepTime);
 
 				i++;
+				stateArray = [...stateArray];
+				stateArray[i] = 1;
+				setstateArray(stateArray);
+				await delay(sleepTime);
 				[arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
 				stateArray = [...stateArray];
+				stateArray[i] = 0;
 				stateArray[low] = 2;
 				stateArray[high] = 2;
 				setstateArray(stateArray);
