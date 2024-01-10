@@ -17,6 +17,9 @@ export default function Gallery() {
 			let url = {};
 			let loaderUrl = {};
 			let thumbnailUrl = {};
+			const deviceWidth = window.innerWidth;
+			const projectThumbnailSize =
+				(deviceWidth / 2) * 1 < 420 ? 420 : Math.floor(deviceWidth / 2);
 
 			data.forEach((element) => {
 				const key = element.public_id.slice(11);
@@ -38,7 +41,9 @@ export default function Gallery() {
 					element.format;
 
 				thumbnailUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_1024/v' +
+					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_' +
+					projectThumbnailSize +
+					'/v' +
 					element.version +
 					'/' +
 					element.public_id +

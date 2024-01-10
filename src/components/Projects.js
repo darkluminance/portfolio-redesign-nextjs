@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 
 export default function Projects() {
 	const [projects, setprojects] = useState([]);
@@ -15,12 +15,17 @@ export default function Projects() {
 		return axios.get(thumbnailURL).then((response) => {
 			let data = response.data.resources;
 			let thumbnailUrl = {};
+			const deviceWidth = window.innerWidth;
+			const projectThumbnailSize =
+				(deviceWidth / 3) * 1 < 420 ? 420 : Math.floor(deviceWidth / 3);
 
 			data.forEach((element) => {
 				const key = element.public_id.slice(9);
 
 				thumbnailUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_1024/v' +
+					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_' +
+					projectThumbnailSize +
+					'/v' +
 					element.version +
 					'/' +
 					element.public_id +
@@ -51,35 +56,40 @@ export default function Projects() {
 					Object.values(projects).map((key, index) => {
 						return (
 							key.thumbnail && (
-								<Link
-									href={`/work/${encodeURIComponent(index + 1)}`}
-									className="text-link"
-									style={{ textDecoration: 'underline' }}
-								>
-									<div
-										className="pics flex-center-full"
-										key={index}
-										onClick={() => {}}
+								<Suspense>
+									<Link
+										href={`/work/${encodeURIComponent(index + 1)}`}
+										className="text-link"
+										style={{ textDecoration: 'underline' }}
 									>
-										<img
-											src={projectThumbnails[key.thumbnail]}
-											alt=""
-											loading="lazy"
-										/>
-										<div className="info flex-center-full flex-col" key={index}>
-											<h1>{key.title}</h1>
-											<p>{key.type}</p>
+										<div
+											className="pics flex-center-full"
+											key={index}
+											onClick={() => {}}
+										>
+											<img
+												src={projectThumbnails[key.thumbnail]}
+												alt=""
+												loading="lazy"
+											/>
+											<div
+												className="info flex-center-full flex-col"
+												key={index}
+											>
+												<h1>{key.title}</h1>
+												<p>{key.type}</p>
 
-											<div className="stacks flex-row">
-												{key.stack.map((element) => {
-													return <span>{element}</span>;
-												})}
+												<div className="stacks flex-row">
+													{key.stack.map((element) => {
+														return <span>{element}</span>;
+													})}
+												</div>
+
+												<h3>{key.year}</h3>
 											</div>
-
-											<h3>{key.year}</h3>
 										</div>
-									</div>
-								</Link>
+									</Link>
+								</Suspense>
 							)
 						);
 					})}

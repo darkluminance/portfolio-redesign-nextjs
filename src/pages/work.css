@@ -4,7 +4,7 @@
 }
 .project {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	gap: 2rem;
 	text-transform: uppercase;
 
@@ -45,7 +45,9 @@
 	}
 
 	.pics .info h1 {
+		width: 360px;
 		margin-bottom: 1rem;
+		text-align: center;
 	}
 
 	.pics .info span {

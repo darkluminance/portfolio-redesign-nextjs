@@ -11,27 +11,24 @@ export default function About() {
 			<div className="page aboutPage flex-center-hor">
 				<div className="aboutContainer">
 					<div className="aboutTextContent">
-						<h1 className="pageHeader">About Me</h1>
+						{/* <h1 className="pageHeader">About Me</h1> */}
 						<p id="p1">
-							I’m Raiyan Abrar. A Programmer, a Designer, a Problem solver, a
-							Creative Person, and a Cat Lover.
+							I’m Raiyan Abrar. A Programmer, a Designer, a Creative Person, and
+							a Cat Lover.
 						</p>
 						<p id="p2">
-							I have completed my B.Sc. in Computer Science and Engineering in
-							2023 from Dhaka and am currently working as a Software Developer
-							at RedDot Digital Limited.
+							I started my career in 2023 and am currently working as a Software
+							Developer at RedDot Digital.
 						</p>
 						<p id="p3">
 							Born on August 23rd in Dhaka, Bangladesh, I have a passion for
-							creating new things and sharing them with the world through social
-							media. I am a tech enthusiast, and also love to explore new places
-							and capture moments through photography. I often create cinematic
-							videos of my travels and produce digital art.
+							creating new things and sharing them through social media. I am a
+							tech enthusiast, and also love to explore new places and capture
+							moments through photography. I often create cinematic videos of my
+							travels and produce digital art.
 						</p>
 						<p id="p4">
-							With a strong background in programming and design, I have both
-							personal and academic projects under my belt ranging from software
-							development to game design. I am particularly proud of my
+							I also make games as a hobby and am particularly proud of my
 							achievement in releasing one of the first indie fan-made Pokémon
 							games in Bangladesh at the age of 19.
 						</p>
