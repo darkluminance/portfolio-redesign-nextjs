@@ -31,8 +31,9 @@
 	justify-content: flex-end;
 
 	.ryeLogo img {
-		width: 4.5rem;
-		height: 2rem;
+		/* width: 4.5rem; */
+		height: 2.8rem;
+		width: auto;
 	}
 }
 
