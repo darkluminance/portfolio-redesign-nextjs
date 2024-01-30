@@ -1,5 +1,4 @@
-// import styles from '../app/page.module.css';
-import Topbar from './Topbar';
+import Topbar from "./Topbar";
 
 export default function HomePage() {
 	return (
