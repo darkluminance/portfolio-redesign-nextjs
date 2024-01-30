@@ -1,10 +1,16 @@
-import HomePage from '@/components/Home';
-import Page from '@/components/page';
+import HomePage from "@/components/Home";
+import Page from "@/components/page";
+import Head from "next/head";
 
 export default function Home() {
 	return (
-		<Page>
-			<HomePage></HomePage>
-		</Page>
+		<>
+			<Head>
+				<title>Raiyan Abrar's Portfolio</title>
+			</Head>
+			<Page>
+				<HomePage></HomePage>
+			</Page>
+		</>
 	);
 }
