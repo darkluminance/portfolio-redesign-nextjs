@@ -1,50 +1,77 @@
 .homepage {
-	max-height: 100vh;
+	/* max-height: 100vh; */
 }
 
 .homeTextcontent {
-	position: absolute;
-	top: 13%;
 	/* letter-spacing: normal; */
+	padding-top: 8%;
+	line-height: 1.5;
+	height: 100vh;
 
 	.homeTitle {
-		font-size: var(--fs-400);
+		font-size: 8dvw;
 		font-weight: var(--fw-600);
 		text-transform: uppercase;
-		line-height: 1.5;
 	}
 
 	.homeDescription {
-		max-width: 24ch;
+		max-width: 42ch;
 		font-size: var(--fs-300);
-	}
-}
 
-@media (min-width: 25rem) {
-	.homeTextcontent {
-		.homeTitle {
-			font-size: var(--fs-500);
-		}
-		.homeDescription {
-			font-size: var(--fs-400);
+		.homeDescriptionWorkplace {
+			text-decoration: underline;
 		}
 	}
 }
 
-@media (min-width: 45rem) {
+.homeAbout {
+	min-height: 100vh;
+	padding: 4%;
+
+	.homeAboutContent {
+	}
+
+	.homeAboutPic img {
+		width: auto;
+		height: 69vh;
+	}
+}
+
+.homeExtraTitle {
+	font-size: 6dvw;
+	font-weight: var(--fw-700);
+	text-transform: uppercase;
+}
+.homeExtraTitle::after {
+	content: "/";
+	margin-left: 1rem;
+}
+
+.homeExtraDescription {
+	font-size: var(--fs-600);
+	font-weight: var(--fw-300);
+	line-height: 1.5;
+}
+
+@media (min-width: 35rem) {
 	main {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
 	}
 	.homeTextcontent {
-		top: calc(50% - 96px);
-		.homeTitle {
-			font-size: var(--fs-600);
-		}
 		.homeDescription {
 			max-width: 100%;
-			font-size: var(--fs-500);
+			font-size: var(--fs-600);
 		}
+	}
+
+	.homeAboutContent {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: 3fr 2fr;
+		justify-content: space-between;
+		align-items: center;
 	}
 }
