@@ -10,7 +10,7 @@
 	}
 
 	.navItems {
-		position: fixed;
+		position: absolute;
 		left: 0;
 		bottom: 5%;
 		width: 100%;

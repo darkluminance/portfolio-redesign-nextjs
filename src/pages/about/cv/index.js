@@ -1,60 +1,65 @@
-import Page from '@/components/page';
-import Topnav from '@/components/Topnav';
-import axios from 'axios';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Page from "@/components/page";
+import Topnav from "@/components/Topnav";
+import axios from "axios";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function CV() {
-	const [experience, setexperience] = useState([]);
+	const [workexperience, setexperience] = useState([]);
 	const [skills, setskills] = useState([]);
+	const [education, seteducation] = useState([]);
 	const [projects, setprojects] = useState([]);
 	const [achievements, setachievements] = useState([]);
 	const [extracurricular, setextracurricular] = useState([]);
-	const experienceDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/experience.json';
-	const skillsDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/skills.json';
+	const experienceDataURL = "/api/workexperiences";
+	const skillsDataURL = "/api/skills";
+	const educationDataURL = "/api/education";
 	const projectsDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects.json';
+		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects.json";
 	const achievementsDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/achievements.json';
+		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/achievements.json";
 	const extracurricularDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/extra-curricular.json';
+		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/extra-curricular.json";
 
-	const fetchData = (api) => {
-		return axios.get(api).then((response) => {
-			return response.data;
-		});
+	const fetchData = async (url) => {
+		const ret = await fetch(url);
+		const res = await ret.json();
+		return res.data;
 	};
 
 	useEffect(() => {
 		async function fetchInfos() {
 			const experienceData = await fetchData(experienceDataURL);
 			setexperience(experienceData);
-			const achievementsData = await fetchData(achievementsDataURL);
+
+			const skillData = await fetchData(skillsDataURL);
+			setskills(skillData);
+
+			const educationData = await fetchData(educationDataURL);
+			seteducation(educationData);
+			/* const achievementsData = await fetchData(achievementsDataURL);
 			setachievements(achievementsData);
 			const extracurricularData = await fetchData(extracurricularDataURL);
 			setextracurricular(extracurricularData);
-			const skillData = await fetchData(skillsDataURL);
-			setskills(skillData);
 			const projectData = await fetchData(projectsDataURL);
 			const filteredProjectData = [];
 			projectData.forEach((element) => {
 				if (element != null && element.feature)
 					filteredProjectData.push(element);
 			});
-			setprojects(filteredProjectData);
+			setprojects(filteredProjectData); */
 		}
 		fetchInfos();
 	}, []);
 
 	return (
 		<Page>
-			<div className="page flex-center-hor cvpage">
+			<Topnav></Topnav>
+			<div className="">
 				<div className="cvContainer">
 					<div className="cvHeader">Raiyan Abrar</div>
 					<div className="cvTitle">Software Engineer</div>
-					<div className="cvContact">
+					<div className="cvContact flex-wrap">
 						<Link href="http://rye013.netlify.app" target="_blank">
 							<span className="contactWebsite link">• rye013.netlify.app</span>
 						</Link>
@@ -68,209 +73,102 @@ export default function CV() {
 						</Link>
 					</div>
 					<div className="cvContents">
-						<div className="cvContentLeft">
-							<div className="cvExperience cvContent">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Experience</span>
-								</div>
-								<div className="contentItems">
-									{experience &&
-										Object.values(experience).map((item, index) => {
-											return (
-												<div key={index} className="contentItem experience">
-													<div className="experiencePlace itemPlace">
-														{item.place}
-													</div>
-													<div className="experienceTitle flex-row">
-														<span>{item.position}</span>{' '}
-														<span className="op-69">
-															({item.joined} - {item.left})
-														</span>
-													</div>
-													<div className="experienceProjects">
-														{Object.values(item.projects).map((project, j) => {
-															return (
-																<div
-																	key={project.name}
-																	className="experienceProject"
-																>
-																	<div className="projectName">
-																		{project.name}
-																	</div>
-																	<ul className="projectTasks">
-																		{Object.values(project.tasks).map(
-																			(task, i) => {
-																				return (
-																					<li
-																						key={task}
-																						className="projectTask"
-																					>
-																						{task}
-																					</li>
-																				);
-																			}
-																		)}
-																	</ul>
-																</div>
-															);
-														})}
-													</div>
-												</div>
-											);
-										})}
-								</div>
-							</div>
+						<div className="cvContent">
+							<h3 className="contentTitle">Work Experience</h3>
 
-							<div className="cvSkills cvContent">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Skills</span>
-								</div>
-								<div className="contentItems">
-									{skills &&
-										Object.keys(skills).map((item, index) => {
-											return (
-												<div key={index} className="contentItem">
-													<div className="skillType">{item}</div>
-													<div className="skillItems flex-row">
-														{Object.values(skills[item]).map((skill, i) => {
-															return (
-																<span key={skill} className="skillItem">
-																	{skill}
-																</span>
-															);
-														})}
-													</div>
+							{workexperience &&
+								workexperience.map((item) => (
+									<div key={item._id} className="contentItems">
+										{item.positions.length > 1 && (
+											<div className="">
+												<h3>{item.companyName}</h3>
+												<div className="">
+													{item.positions[0].from} -{" "}
+													{item.positions[item.positions.length - 1].to}
 												</div>
-											);
-										})}
-								</div>
-							</div>
-							<div className="cvEducation cvContent">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Education</span>
-								</div>
-								<div className="contentItems">
-									<div className="contentItem">
-										<div className=" itemPlace">
-											Military Institute of Science and Technology
-										</div>
-										<div className="experienceTitle">
-											Computer Science and Engineering{' '}
-											<span className="op-69">(2019 - 2023)</span>
-										</div>
-									</div>
-									<div className="contentItem">
-										<div className=" itemPlace">Rajuk Uttara Model College</div>
-										<div className="experienceTitle">
-											Higher Secondary, Faculty of Sciences{' '}
-											<span className="op-69">(2016 - 2018)</span>
-										</div>
-									</div>
-									<div className="contentItem">
-										<div className=" itemPlace">Rajuk Uttara Model College</div>
-										<div className="experienceTitle">
-											Secondary School, Faculty of Sciences{' '}
-											<span className="op-69">(2014 - 2016)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="cvContentRight">
-							<div className="cvProjects cvContent">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Projects</span>
-								</div>
-								<div className="contentItems">
-									{projects &&
-										Object.values(projects).map((item, index) => {
-											return (
-												<div key={index} className="contentItem projectitem">
-													<div className="projecttitle flex-row">
-														<span>{item.title}</span>
-														<span className="fw-300 op-69">- {item.year}</span>
-													</div>
-													<div className="projectstacks flex-row">
-														{Object.values(item.stack).map((stack, i) => {
-															return (
-																<span key={stack} className="stackItem">
-																	{stack}
-																</span>
-															);
-														})}
-													</div>
-													<div className="projectdescription">
-														{item.description}
-													</div>
-												</div>
-											);
-										})}
-								</div>
-							</div>
-							<div className="cvExtraCurriculars cvContent mt-4r">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Co-Curricular</span>
-								</div>
-								<div className="contentItems">
-									{extracurricular &&
-										Object.values(extracurricular).map((item) => {
-											return (
-												<div className="contentItem">
-													<div>
-														<div className="projecttitle flex-row flex-wrap">
-															<span>{item.place}</span>
-															<span className="op-69 fw-300">
-																- {item.year}
-															</span>
+											</div>
+										)}
+
+										{item.positions &&
+											item.positions.map((position) => (
+												<div key={position._id} className="contentItem">
+													{item.positions.length > 1 && (
+														<div className=""></div>
+													)}
+													<div className="">
+														<h4>{position.name}</h4>
+														{item.positions.length == 1 && (
+															<div className="">{item.companyName}</div>
+														)}
+														<div className="">
+															{position.from} - {position.to}
 														</div>
-														<ul className="mt-1r">
-															{Object.values(item.points).map(function (point) {
-																return <li>{point}</li>;
-															})}
-														</ul>
+													</div>
+													<ul className="contentItemList">
+														{position.tasks &&
+															position.tasks.map((task, index4) => (
+																<li key={index4}>{task.name}</li>
+															))}
+													</ul>
+													<div className="">
+														{position.skills && (
+															<div>
+																<span>Skills: </span>
+																{position.skills.map((skill) => (
+																	<span
+																		className="contentItemSkill"
+																		key={skill.name}
+																	>
+																		{skill.name}
+																	</span>
+																))}
+															</div>
+														)}
 													</div>
 												</div>
-											);
-										})}
-								</div>
-							</div>
-							<div className="cvAchievements cvContent">
-								<div className="contentTitle flex-row flex-center-ver">
-									<span>Achievements</span>
-								</div>
-								<div className="contentItems">
-									<div className="contentItem">
-										<ul>
-											{achievements &&
-												Object.values(achievements).map((achievement) => {
-													if (achievement.type == 'contest') {
-														return (
-															<li>
-																<span className="fw-700">
-																	{achievement.place} place
-																</span>
-																: {achievement.competition}{' '}
-																<span className="op-69">
-																	-{achievement.year}
-																</span>
-															</li>
-														);
-													} else {
-														return (
-															<li>
-																Solved{' '}
-																<span className="fw-700">
-																	{achievement.count}+
-																</span>{' '}
-																problems in {achievement.platform}
-															</li>
-														);
-													}
-												})}
-										</ul>
+											))}
 									</div>
-								</div>
-							</div>
+								))}
+						</div>
+
+						<div className="cvContent">
+							<h3 className="contentTitle">Skills</h3>
+
+							<ul className="contentItems">
+								{skills &&
+									skills.map((skill) => (
+										<li key={skill._id} className="contentItem">
+											<div className="flex-wrap">
+												<h4>{skill._id}: </h4>
+												{skill.skills.map((categorySkill) => (
+													<span
+														className="contentItemSkill"
+														key={categorySkill}
+													>
+														{categorySkill}
+													</span>
+												))}
+											</div>
+										</li>
+									))}
+							</ul>
+						</div>
+
+						<div className="cvContent">
+							<h3 className="contentTitle">Education</h3>
+
+							{education &&
+								education.map((education) => (
+									<div className="contentItems">
+										<div className="contentItem">
+											<h4>{education.degree}</h4>
+											<p>{education.institution}</p>
+											<p>
+												{education.from} - {education.to}
+											</p>
+										</div>
+									</div>
+								))}
 						</div>
 					</div>
 				</div>
