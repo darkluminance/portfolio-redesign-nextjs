@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Ryelogo from './Ryelogo';
+import Link from "next/link";
+import Ryelogo from "./Ryelogo";
 
 export default function Topbar() {
 	return (
@@ -17,11 +17,6 @@ export default function Topbar() {
 					<li className="navList-Item">
 						<Link href="/about" className="text-link italic">
 							About
-						</Link>
-					</li>
-					<li className="navList-Item">
-						<Link href="/about/resume" className="text-link italic">
-							Portfolio
 						</Link>
 					</li>
 					<li className="navList-Item">
