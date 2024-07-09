@@ -1,4 +1,3 @@
-// import { Education } from "@/models/Education";
 import { useEffect, useState } from "react";
 
 function Educations() {

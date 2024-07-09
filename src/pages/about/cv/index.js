@@ -1,56 +1,19 @@
 import Page from "@/components/page";
 import Topnav from "@/components/Topnav";
-import axios from "axios";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import * as PORTFOLIO_API from "@/utils/globalAPIs";
 
-export default function CV() {
-	const [workexperience, setexperience] = useState([]);
-	const [skills, setskills] = useState([]);
-	const [education, seteducation] = useState([]);
+export default function CV({ experienceData, skillsData, educationData }) {
 	const [projects, setprojects] = useState([]);
 	const [achievements, setachievements] = useState([]);
 	const [extracurricular, setextracurricular] = useState([]);
-	const experienceDataURL = "/api/workexperiences";
-	const skillsDataURL = "/api/skills";
-	const educationDataURL = "/api/education";
 	const projectsDataURL =
 		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects.json";
 	const achievementsDataURL =
 		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/achievements.json";
 	const extracurricularDataURL =
 		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/extra-curricular.json";
-
-	const fetchData = async (url) => {
-		const ret = await fetch(url);
-		const res = await ret.json();
-		return res.data;
-	};
-
-	useEffect(() => {
-		async function fetchInfos() {
-			const experienceData = await fetchData(experienceDataURL);
-			setexperience(experienceData);
-
-			const skillData = await fetchData(skillsDataURL);
-			setskills(skillData);
-
-			const educationData = await fetchData(educationDataURL);
-			seteducation(educationData);
-			/* const achievementsData = await fetchData(achievementsDataURL);
-			setachievements(achievementsData);
-			const extracurricularData = await fetchData(extracurricularDataURL);
-			setextracurricular(extracurricularData);
-			const projectData = await fetchData(projectsDataURL);
-			const filteredProjectData = [];
-			projectData.forEach((element) => {
-				if (element != null && element.feature)
-					filteredProjectData.push(element);
-			});
-			setprojects(filteredProjectData); */
-		}
-		fetchInfos();
-	}, []);
 
 	return (
 		<Page>
@@ -76,8 +39,8 @@ export default function CV() {
 						<div className="cvContent">
 							<h3 className="contentTitle">Work Experience</h3>
 
-							{workexperience &&
-								workexperience.map((item) => (
+							{experienceData &&
+								experienceData.map((item) => (
 									<div key={item._id} className="contentItems">
 										{item.positions.length > 1 && (
 											<div className="">
@@ -135,8 +98,8 @@ export default function CV() {
 							<h3 className="contentTitle">Skills</h3>
 
 							<ul className="contentItems">
-								{skills &&
-									skills.map((skill) => (
+								{skillsData &&
+									skillsData.map((skill) => (
 										<li key={skill._id} className="contentItem">
 											<div className="flex-wrap">
 												<h4>{skill._id}: </h4>
@@ -157,8 +120,8 @@ export default function CV() {
 						<div className="cvContent">
 							<h3 className="contentTitle">Education</h3>
 
-							{education &&
-								education.map((education) => (
+							{educationData &&
+								educationData.map((education) => (
 									<div className="contentItems">
 										<div className="contentItem">
 											<h4>{education.degree}</h4>
@@ -175,4 +138,32 @@ export default function CV() {
 			</div>
 		</Page>
 	);
+}
+
+const fetchData = async (url) => {
+	const ret = await fetch(url);
+	const res = await ret.json();
+	return res.data;
+};
+
+export async function getServerSideProps(context) {
+	const { req } = context;
+
+	const baseUrl = req
+		? `${
+				req.protocol
+					? req.protocol
+					: req.headers["x-forwarded-proto"]
+					? req.headers["x-forwarded-proto"]
+					: "http"
+		  }://${req.headers.host}`
+		: "";
+
+	const experienceData = await fetchData(
+		baseUrl + PORTFOLIO_API.EXPERIENCES_API
+	);
+	const skillsData = await fetchData(baseUrl + PORTFOLIO_API.SKILLS_API);
+	const educationData = await fetchData(baseUrl + PORTFOLIO_API.EDUCATION_API);
+
+	return { props: { experienceData, skillsData, educationData } };
 }

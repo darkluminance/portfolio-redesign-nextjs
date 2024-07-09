@@ -40,7 +40,7 @@ function HomeAbout() {
 
 	return (
 		<div className="homeAbout homeContent">
-			<h1 className="homeExtraTitle">About me</h1>
+			<h1 className="homeExtraTitle">Who am I</h1>
 			<div className="homeAboutContent homeExtraContent">
 				<div className="homeAboutDescriptions">
 					<p className="homeExtraDescription">
@@ -81,7 +81,9 @@ function HomeWorkSkills() {
 					<li>Web Development</li>
 					<li>Game Development</li>
 					<li>App Development</li>
+					<li>Video Editing</li>
 					<li>UI/UX Design</li>
+					<li>Graphics Design</li>
 					<li>Digital Art</li>
 				</ul>
 			</div>
