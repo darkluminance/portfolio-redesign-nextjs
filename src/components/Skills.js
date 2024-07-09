@@ -1,4 +1,3 @@
-// import { Skill } from "@/models/Skill";
 import { useEffect, useState } from "react";
 
 function Skills() {
