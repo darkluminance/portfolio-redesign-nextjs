@@ -147,6 +147,10 @@ button {
 	outline: none;
 }
 
+.flex {
+	display: flex;
+}
+
 .flex-row {
 	display: flex;
 	flex-direction: row;
@@ -171,6 +175,14 @@ button {
 .flex-wrap {
 	display: flex;
 	flex-wrap: wrap;
+}
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+.flex-gap-1 {
+	display: flex;
+	gap: 1rem;
 }
 
 .fw-300 {

@@ -10,7 +10,11 @@ export default function Topbar() {
 			<div className="navItems flex-center-hor flex-center-ver">
 				<ul className="navList flex-row">
 					<li className="navList-Item">
-						<Link href="/about/cv" className="text-link italic">
+						<Link
+							href="/about/cv"
+							target="__blank"
+							className="text-link italic"
+						>
 							CV
 						</Link>
 					</li>

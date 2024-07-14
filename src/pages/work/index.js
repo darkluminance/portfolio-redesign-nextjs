@@ -1,9 +1,9 @@
-import Topnav from '@/components/Topnav';
-import Projects from '@/components/Projects';
-import Design from '@/components/Design';
-import Arts from '@/components/Arts';
-import { useState } from 'react';
-import Page from '@/components/page';
+import Topnav from "@/components/Topnav";
+import Projects from "@/components/Projects";
+import Design from "@/components/Design";
+import Arts from "@/components/Arts";
+import { useState } from "react";
+import Page from "@/components/page";
 
 export default function Work() {
 	let [activeCategory, setActiveCategory] = useState(0);
@@ -13,18 +13,18 @@ export default function Work() {
 			<Topnav></Topnav>
 			<div className="page flex-center-hor">
 				<div className="container workContainer">
-					<h1 className="pageHeader" style={{ width: '100%' }}>
+					<h1 className="pageHeader" style={{ width: "100%" }}>
 						My Works
 					</h1>
 					<ul
 						className="skillCategories flex-center-hor"
-						style={{ marginBlock: '1rem !important;' }}
+						style={{ marginBlock: "1rem !important" }}
 					>
 						<li
 							className={
 								activeCategory == 0
-									? 'skillCategory flex-center-full active'
-									: 'skillCategory flex-center-full'
+									? "skillCategory flex-center-full active"
+									: "skillCategory flex-center-full"
 							}
 							onClick={() => setActiveCategory(0)}
 						>
@@ -33,8 +33,8 @@ export default function Work() {
 						<li
 							className={
 								activeCategory == 1
-									? 'skillCategory flex-center-full active'
-									: 'skillCategory flex-center-full'
+									? "skillCategory flex-center-full active"
+									: "skillCategory flex-center-full"
 							}
 							onClick={() => setActiveCategory(1)}
 						>
@@ -43,8 +43,8 @@ export default function Work() {
 						<li
 							className={
 								activeCategory == 2
-									? 'skillCategory flex-center-full active'
-									: 'skillCategory flex-center-full'
+									? "skillCategory flex-center-full active"
+									: "skillCategory flex-center-full"
 							}
 							onClick={() => setActiveCategory(2)}
 						>
