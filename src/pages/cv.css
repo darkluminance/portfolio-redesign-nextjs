@@ -2,7 +2,7 @@
 	font-size: var(--fs-300);
 	font-weight: var(--fw-400);
 	margin: 1rem;
-	line-height: 1.5rem;
+	line-height: 1.5;
 }
 
 .cvHeader {
@@ -51,12 +51,26 @@
 					margin-block: 0.5rem;
 				}
 
+				.contentItemProjectTitle {
+					margin-block: 0.25rem;
+				}
+
+				.contentItemProjectCategory {
+					font-weight: var(--fw-500);
+				}
+
 				.contentItemSkill {
 					margin-inline: 0.25rem;
 
 					&:not(:last-child)::after {
 						content: ",";
 					}
+				}
+
+				.contentItemProjectSkill {
+					font-weight: var(--fw-300);
+					font-size: var(--fs-200);
+					margin-left: 0;
 				}
 			}
 		}

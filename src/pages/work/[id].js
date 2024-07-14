@@ -1,39 +1,36 @@
-import axios from 'axios';
-
-import Topnav from '@/components/Topnav';
-import Page from '@/components/page';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import Topnav from "@/components/Topnav";
+import Page from "@/components/page";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { PROJECTS_API } from "@/utils/globalAPIs";
 
 export default function Paage() {
 	const router = useRouter();
 	const [project, setproject] = useState([]);
 
-	const projectDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects/';
-
-	const fetchData = () => {
-		console.log(router);
-		return axios
-			.get(projectDataURL + router.query.id + '.json')
-			.then((response) => {
-				setproject(response.data);
-			});
+	const fetchData = async () => {
+		return fetch(PROJECTS_API + "/" + router.query.id).then(
+			async (response) => {
+				const res = await response.json();
+				setproject(res.data);
+			}
+		);
 	};
 
 	useEffect(() => {
-		fetchData();
-	}, []);
+		if (router.isReady) fetchData();
+	}, [router.isReady]);
+
 	return (
 		<Page>
 			<Topnav routeLink="/work" routeName="WORK"></Topnav>
 			<div className="page flex-center-hor">
 				{project && (
 					<div className="container flex-center-hor">
-						{project.stack && (
+						{project.stacks && (
 							<div className="projectItemContainer">
 								<div className="projectTitle flex-center-full">
-									<span>{project.title}</span>
+									<span>{project.name}</span>
 								</div>
 								<div className="projectContent">
 									<div className="projectDescription">
@@ -42,44 +39,44 @@ export default function Paage() {
 
 									<div className="projectInfos">
 										<div>
-											<div className="projectYearTitle">Year:</div>{' '}
+											<div className="projectYearTitle">Year:</div>{" "}
 											<span className="projectYear">{project.year}</span>
 										</div>
 										<div>
-											<div className="projectYearTitle">Stack:</div>{' '}
+											<div className="projectYearTitle">Stack:</div>{" "}
 											<span className="projectStack">
-												{project.stack.map((item, index) => (
+												{project.stacks.map((item, index) => (
 													<span key={index}>
-														{item}
-														{index !== project.stack.length - 1 ? ', ' : ''}
+														{item.stack}
+														{index !== project.stacks.length - 1 ? ", " : ""}
 													</span>
 												))}
 											</span>
 										</div>
 										<div>
-											<div className="projectYearTitle">Github:</div>{' '}
-											{project.url && (
+											<div className="projectYearTitle">Github:</div>{" "}
+											{project.githubURL && (
 												<span className="projectYear">
 													<a
-														href={project.url}
+														href={project.githubURL}
 														target="_blank"
 														rel="noreferrer"
 														className="text-link italic"
 													>
-														{project.url}
+														{project.githubURL}
 													</a>
 												</span>
 											)}
-											{!project.url && <span>N/A</span>}
+											{!project.githubURL && <span>N/A</span>}
 										</div>
 									</div>
-									<div className="projectInfos" style={{ marginTop: '3rem' }}>
+									<div className="projectInfos" style={{ marginTop: "3rem" }}>
 										<div>
-											{project.demo && (
+											{project.demoURL && (
 												<div>
 													<span className="projectYear">
 														<a
-															href={project.demo}
+															href={project.demoURL}
 															target="_blank"
 															rel="noreferrer"
 															className="text-link italic"

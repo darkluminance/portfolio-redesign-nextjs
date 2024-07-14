@@ -1,35 +1,32 @@
-import axios from 'axios';
-import Link from 'next/link';
-import { useState, useEffect, Suspense } from 'react';
+import Link from "next/link";
+import { useState, useEffect, Suspense } from "react";
+import { PROJECTS_API } from "@/utils/globalAPIs";
 
 export default function Projects() {
 	const [projects, setprojects] = useState([]);
 	const [projectThumbnails, setprojectThumbnails] = useState([]);
 
-	const thumbnailURL =
-		'https://res.cloudinary.com/dwyosqxlr/image/list/projects.json';
-	const projectDataURL =
-		'https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects.json';
+	const thumbnailDataURL = process.env.NEXT_PUBLIC_THUMBNAIL_DATA_URL;
 
-	const fetchImgData = () => {
-		return axios.get(thumbnailURL).then((response) => {
-			let data = response.data.resources;
+	const fetchImgData = async () => {
+		return fetch(thumbnailDataURL).then(async (response) => {
+			const res = await response.json();
+			let data = res.resources;
 			let thumbnailUrl = {};
 			const deviceWidth = window.innerWidth;
-			const projectThumbnailSize =
-				(deviceWidth / 3) * 1 < 420 ? 420 : Math.floor(deviceWidth / 3);
+			const projectThumbnailSize = Math.floor(deviceWidth / 2);
 
 			data.forEach((element) => {
 				const key = element.public_id.slice(9);
 
 				thumbnailUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_' +
+					"https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_" +
 					projectThumbnailSize +
-					'/v' +
+					"/v" +
 					element.version +
-					'/' +
+					"/" +
 					element.public_id +
-					'.' +
+					"." +
 					element.format;
 			});
 
@@ -37,10 +34,10 @@ export default function Projects() {
 		});
 	};
 
-	const fetchData = () => {
-		return axios.get(projectDataURL).then((response) => {
-			let data = response.data.slice(1);
-			setprojects(data);
+	const fetchData = async () => {
+		return fetch(PROJECTS_API).then(async (response) => {
+			let res = await response.json();
+			setprojects(res.data);
 		});
 	};
 
@@ -55,37 +52,26 @@ export default function Projects() {
 				{projects &&
 					Object.values(projects).map((key, index) => {
 						return (
-							key.thumbnail && (
+							key.thumbnailURL && (
 								<Suspense>
-									<Link
-										href={`/work/${encodeURIComponent(index + 1)}`}
-										className="text-link"
-										style={{ textDecoration: 'underline' }}
-									>
-										<div
-											className="pics flex-center-full"
-											key={index}
-											onClick={() => {}}
-										>
+									<Link href={`/work/${encodeURIComponent(key.thumbnailURL)}`}>
+										<div className="pics" key={index} onClick={() => {}}>
 											<img
-												src={projectThumbnails[key.thumbnail]}
+												src={projectThumbnails[key.thumbnailURL]}
 												alt=""
 												loading="lazy"
 											/>
-											<div
-												className="info flex-center-full flex-col"
-												key={index}
-											>
-												<h1>{key.title}</h1>
-												<p>{key.type}</p>
+											<div className="info" key={index}>
+												<h2>{key.name}</h2>
+												<p>
+													- {key.category}, {key.year}
+												</p>
 
-												<div className="stacks flex-row">
-													{key.stack.map((element) => {
-														return <span>{element}</span>;
+												<div className="stacks flex-wrap">
+													{key.stacks.map((element) => {
+														return <span>{element.stack}</span>;
 													})}
 												</div>
-
-												<h3>{key.year}</h3>
 											</div>
 										</div>
 									</Link>

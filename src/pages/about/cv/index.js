@@ -4,7 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import * as PORTFOLIO_API from "@/utils/globalAPIs";
 
-export default function CV({ experienceData, skillsData, educationData }) {
+export default function CV({
+	experienceData,
+	skillsData,
+	educationData,
+	projectData,
+}) {
 	const [projects, setprojects] = useState([]);
 	const [achievements, setachievements] = useState([]);
 	const [extracurricular, setextracurricular] = useState([]);
@@ -118,6 +123,39 @@ export default function CV({ experienceData, skillsData, educationData }) {
 						</div>
 
 						<div className="cvContent">
+							<h3 className="contentTitle">Projects</h3>
+
+							{projectData &&
+								projectData.map((project) => (
+									<div className="contentItems">
+										<div className="contentItem">
+											<div className="flex-space-between">
+												<h3 className="contentItemProjectTitle">
+													{project.name}
+												</h3>
+												<span> | {project.year}</span>
+											</div>
+
+											<h4 className="contentItemProjectCategory">
+												{project.category}
+											</h4>
+											<div className="flex-wrap">
+												{project.stacks &&
+													project.stacks.map((stack) => (
+														<span className="contentItemSkill contentItemProjectSkill">
+															{stack.stack}
+														</span>
+													))}
+											</div>
+											<div className="contentItemList">
+												<p>{project.description}</p>
+											</div>
+										</div>
+									</div>
+								))}
+						</div>
+
+						<div className="cvContent">
 							<h3 className="contentTitle">Education</h3>
 
 							{educationData &&
@@ -164,6 +202,7 @@ export async function getServerSideProps(context) {
 	);
 	const skillsData = await fetchData(baseUrl + PORTFOLIO_API.SKILLS_API);
 	const educationData = await fetchData(baseUrl + PORTFOLIO_API.EDUCATION_API);
+	const projectData = await fetchData(baseUrl + PORTFOLIO_API.PROJECTS_API);
 
-	return { props: { experienceData, skillsData, educationData } };
+	return { props: { experienceData, skillsData, educationData, projectData } };
 }
