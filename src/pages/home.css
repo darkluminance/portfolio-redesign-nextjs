@@ -145,7 +145,7 @@
 	}
 
 	.homeTitle {
-		font-size: 8dvw;
+		font-size: min(200px, 8vw);
 		font-weight: var(--fw-600);
 	}
 

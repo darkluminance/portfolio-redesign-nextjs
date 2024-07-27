@@ -1,13 +1,29 @@
 import Link from "next/link";
+import menu from "@/assets/hamburger_menu.svg";
+import { useState } from "react";
 import Ryelogo from "./Ryelogo";
+import Image from "next/image";
+import closeButton from "@/assets/images/close.png";
 
 export default function Topbar() {
+	const [navMenuOpen, setnavMenuOpen] = useState(false);
+
 	return (
 		<nav className="topbar">
 			<div className="ryeLogo flex-center-ver">
 				<Ryelogo></Ryelogo>
 			</div>
-			<div className="navItems flex-center-hor flex-center-ver">
+			<div
+				className={
+					navMenuOpen
+						? "navItems active screen flex-center-hor flex-center-ver"
+						: "navItems flex-center-hor flex-center-ver"
+				}
+			>
+				{/* <div className="navItemsBackdrop"></div> */}
+				<div className="navClose" onClick={() => setnavMenuOpen(false)}>
+					<Image src={closeButton} alt="Close button"></Image>
+				</div>
 				<ul className="navList flex-row">
 					<li className="navList-Item">
 						<Link
@@ -34,6 +50,9 @@ export default function Topbar() {
 						</Link>
 					</li>
 				</ul>
+			</div>
+			<div className="hamburgerMenu" onClick={() => setnavMenuOpen(true)}>
+				<Image src={menu} alt="Menu"></Image>
 			</div>
 		</nav>
 	);
