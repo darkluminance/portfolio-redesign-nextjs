@@ -3,7 +3,7 @@ import menu from "@/assets/hamburger_menu.svg";
 import { useState } from "react";
 import Ryelogo from "./Ryelogo";
 import Image from "next/image";
-import closeButton from "@/assets/images/close.png";
+import closeButton from "@/assets/close.svg";
 
 export default function Topbar() {
 	const [navMenuOpen, setnavMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Topbar() {
 			<div
 				className={
 					navMenuOpen
-						? "navItems active screen flex-center-hor flex-center-ver"
+						? "navItems nav-active flex-center-hor flex-center-ver"
 						: "navItems flex-center-hor flex-center-ver"
 				}
 			>
@@ -41,7 +41,7 @@ export default function Topbar() {
 					</li>
 					<li className="navList-Item">
 						<Link href="/work" className="text-link italic">
-							Projects
+							Works
 						</Link>
 					</li>
 					<li className="navList-Item">
