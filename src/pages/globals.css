@@ -13,8 +13,9 @@
 
 	--primary-color: #eee;
 	--primary-dark-color: #333;
-	--primary-dark-color-lighter: #696969;
+	--primary-dark-color-lighter: #888888;
 	--primary-dark-color-border: #33333350;
+	--light-border-color: #bbb;
 	--accent-color: #6c5ce7;
 
 	--fs-200: 0.875rem;
@@ -183,6 +184,10 @@ button {
 .flex-gap-1 {
 	display: flex;
 	gap: 1rem;
+}
+.flex-gap-2 {
+	display: flex;
+	gap: 2rem;
 }
 
 .fw-300 {

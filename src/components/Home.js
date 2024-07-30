@@ -3,6 +3,21 @@ import Topbar from "./Topbar";
 import me from "@/assets/images/homeMe-2.jpg";
 import Link from "next/link";
 
+import webdev from "@/assets/homeicons/webdev.svg";
+import game from "@/assets/homeicons/game.svg";
+import ui from "@/assets/homeicons/ui.svg";
+import graphics from "@/assets/homeicons/graphics.svg";
+import art from "@/assets/homeicons/art.svg";
+import video from "@/assets/homeicons/video.svg";
+import phone from "@/assets/homeicons/phone.svg";
+
+import coding from "@/assets/homeicons/coding.png";
+import travel from "@/assets/homeicons/travel.png";
+import camera from "@/assets/homeicons/camera.png";
+import film from "@/assets/homeicons/film.png";
+import tv from "@/assets/homeicons/tv.png";
+import tools from "@/assets/homeicons/tools.png";
+
 export default function HomePage() {
 	return (
 		<div className="homepage">
@@ -78,13 +93,69 @@ function HomeWorkSkills() {
 			<h1 className="homeExtraTitle">What I can do</h1>
 			<div className="homeWorkSkillsContent homeExtraContent">
 				<ul>
-					<li>Web Development</li>
-					<li>Game Development</li>
-					<li>App Development</li>
-					<li>Video Editing</li>
-					<li>UI/UX Design</li>
-					<li>Graphics Design</li>
-					<li>Digital Art</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">Web Development</div>
+							<div className="workSkillsContentDescription">
+								Crafting modern and appealing websites that visitors remember
+							</div>
+						</div>
+						<Image src={webdev} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">Game Development</div>
+							<div className="workSkillsContentDescription">
+								Designing and Creating interesting games out of passion
+							</div>
+						</div>
+						<Image src={game} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">App Development</div>
+							<div className="workSkillsContentDescription">
+								Coding intuitive and function applications for the mobile
+							</div>
+						</div>
+						<Image src={phone} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">Video Editing</div>
+							<div className="workSkillsContentDescription">
+								Bringing stories to life through cinematic and motion videos
+							</div>
+						</div>
+						<Image src={video} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">UI/UX Design</div>
+							<div className="workSkillsContentDescription">
+								Developing intuitive visually appealing interfaces for the user
+							</div>
+						</div>
+						<Image src={ui} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">Graphics Design</div>
+							<div className="workSkillsContentDescription">
+								Making stunning visual assets and designs
+							</div>
+						</div>
+						<Image src={graphics} />
+					</li>
+					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
+						<div className="flex flex-col">
+							<div className="workSkillsContentTitle">Digital Art</div>
+							<div className="workSkillsContentDescription">
+								Bringing imaginations to life through digital canvas
+							</div>
+						</div>
+						<Image src={art} />
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -97,12 +168,60 @@ function HomeInterests() {
 			<h1 className="homeExtraTitle">What I love to do</h1>
 			<div className="homeInterestsContent homeExtraContent">
 				<ul>
-					<li>Travelling</li>
-					<li>Photography</li>
-					<li>Cinematic Filmmaking</li>
-					<li>Anime</li>
-					<li>Coding</li>
-					<li>Making new things</li>
+					<li className="flex flex-col flex-center-hor flex-center-hor ">
+						<div>
+							<Image src={travel} />
+						</div>
+						<div className="workInterestsContentTitle">Travelling</div>
+						<div className="workInterestsContentDescription">
+							Exploring new places, especially mountains
+						</div>
+					</li>
+					<li className="flex flex-col flex-center-hor flex-center-hor ">
+						<div>
+							<Image src={camera} />
+						</div>
+						<div className="workInterestsContentTitle">Photography</div>
+						<div className="workInterestsContentDescription">
+							Capturing the mesmurizing beauty of the world
+						</div>
+					</li>
+					<li className="flex flex-col flex-center-hor flex-center-hor ">
+						<div>
+							<Image src={film} />
+						</div>
+						<div className="workInterestsContentTitle">Film-making</div>
+						<div className="workInterestsContentDescription">
+							Bringing my travel stories to life through cinema
+						</div>
+					</li>
+					<li className="flex flex-col flex-center-hor flex-center-ver ">
+						<div>
+							<Image src={tv} />
+						</div>
+						<div className="workInterestsContentTitle">Anime & TV shows</div>
+						<div className="workInterestsContentDescription">
+							Enjoying wide varieties of stories for time-pass
+						</div>
+					</li>
+					<li className="flex flex-col flex-center-hor flex-center-ver ">
+						<div>
+							<Image src={coding} />
+						</div>
+						<div className="workInterestsContentTitle">Coding</div>
+						<div className="workInterestsContentDescription">
+							Wracking up my brains through programming
+						</div>
+					</li>
+					<li className="flex flex-col flex-center-hor flex-center-ver ">
+						<div>
+							<Image src={tools} />
+						</div>
+						<div className="workInterestsContentTitle">Making new things</div>
+						<div className="workInterestsContentDescription">
+							Materializing ideas through innovative projects
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>
