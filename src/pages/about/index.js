@@ -6,8 +6,10 @@ import Page from "@/components/page";
 import Skills from "@/components/Skills";
 import Workexperiences from "@/components/WorkExperiences";
 import Educations from "@/components/Educations";
+import * as PORTFOLIO_API from "@/utils/globalAPIs";
+import { fetchData } from "@/utils/globalFunctions";
 
-export default function About() {
+export default function About({ experienceData, skillsData, educationData }) {
 	return (
 		<Page>
 			<Topnav></Topnav>
@@ -70,20 +72,13 @@ export default function About() {
 					</div>
 				</div>
 				<div className="aboutContent">
-					<Workexperiences></Workexperiences>
+					<Workexperiences workexperiences={experienceData}></Workexperiences>
 				</div>
 				<div className="aboutContent">
-					<Skills></Skills>
+					<Skills skills={skillsData}></Skills>
 
 					<div className="aboutResume">
-						{/* <NavLink to="/resume">
-									</NavLink> */}
-						<Link
-							// href="https://drive.google.com/file/d/1VN5PZaeya5kDyGRc_yTqUnxKGyiMlMcI/view?usp=sharing"
-							href="/about/cv"
-							target="_blank"
-							// rel="noreferrer"
-						>
+						<Link href="/about/cv" target="_blank">
 							<div className="aboutResumeBtn flex-center-full">
 								Check out my Resume
 							</div>
@@ -91,9 +86,31 @@ export default function About() {
 					</div>
 				</div>
 				<div className="aboutContent">
-					<Educations></Educations>
+					<Educations educations={educationData}></Educations>
 				</div>
 			</div>
 		</Page>
 	);
+}
+
+export async function getServerSideProps(context) {
+	const { req } = context;
+
+	const baseUrl = req
+		? `${
+				req.protocol
+					? req.protocol
+					: req.headers["x-forwarded-proto"]
+					? req.headers["x-forwarded-proto"]
+					: "http"
+		  }://${req.headers.host}`
+		: "";
+
+	const experienceData = await fetchData(
+		baseUrl + PORTFOLIO_API.EXPERIENCES_API
+	);
+	const skillsData = await fetchData(baseUrl + PORTFOLIO_API.SKILLS_API);
+	const educationData = await fetchData(baseUrl + PORTFOLIO_API.EDUCATION_API);
+
+	return { props: { experienceData, skillsData, educationData } };
 }

@@ -1,17 +1,4 @@
-import { useEffect, useState } from "react";
-
-function Educations() {
-	const [educations, setEducations] = useState([]);
-
-	useEffect(() => {
-		async function getEducations() {
-			const ret = await fetch("/api/education");
-			const res = await ret.json();
-			setEducations(res.data);
-		}
-		getEducations();
-	}, []);
-
+function Educations({ educations }) {
 	return (
 		<>
 			<h1>Education</h1>

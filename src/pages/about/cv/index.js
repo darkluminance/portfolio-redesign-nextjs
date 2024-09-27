@@ -3,6 +3,7 @@ import Topnav from "@/components/Topnav";
 import Link from "next/link";
 import { useState } from "react";
 import * as PORTFOLIO_API from "@/utils/globalAPIs";
+import { fetchData } from "@/utils/globalFunctions";
 
 export default function CV({
 	experienceData,
@@ -10,16 +11,6 @@ export default function CV({
 	educationData,
 	projectData,
 }) {
-	const [projects, setprojects] = useState([]);
-	const [achievements, setachievements] = useState([]);
-	const [extracurricular, setextracurricular] = useState([]);
-	const projectsDataURL =
-		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/projects.json";
-	const achievementsDataURL =
-		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/achievements.json";
-	const extracurricularDataURL =
-		"https://portfolio-updated-69-default-rtdb.asia-southeast1.firebasedatabase.app/extra-curricular.json";
-
 	return (
 		<Page>
 			<Topnav></Topnav>
@@ -177,12 +168,6 @@ export default function CV({
 		</Page>
 	);
 }
-
-const fetchData = async (url) => {
-	const ret = await fetch(url);
-	const res = await ret.json();
-	return res.data;
-};
 
 export async function getServerSideProps(context) {
 	const { req } = context;
