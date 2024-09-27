@@ -1,17 +1,4 @@
-import { useEffect, useState } from "react";
-
-function Workexperiences() {
-	const [workexperiences, setWorkexperiences] = useState([]);
-
-	useEffect(() => {
-		async function getWorkexperiences() {
-			const ret = await fetch("/api/workexperiences");
-			const res = await ret.json();
-			setWorkexperiences(res.data);
-		}
-		getWorkexperiences();
-	}, []);
-
+function Workexperiences({ workexperiences }) {
 	return (
 		<>
 			<h1>Work Experiences</h1>

@@ -1,17 +1,4 @@
-import { useEffect, useState } from "react";
-
-function Skills() {
-	const [skills, setSkills] = useState([]);
-
-	useEffect(() => {
-		async function getSkills() {
-			const ret = await fetch("/api/skills");
-			const res = await ret.json();
-			setSkills(res.data);
-		}
-		getSkills();
-	}, []);
-
+function Skills({ skills }) {
 	return (
 		<>
 			<h1>Skills</h1>
