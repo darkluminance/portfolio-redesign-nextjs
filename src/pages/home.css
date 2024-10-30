@@ -16,6 +16,17 @@
 			font-weight: var(--fw-500);
 		}
 	}
+	.homeTopDescription {
+		margin-bottom: 1rem;
+	}
+	.homeDescriptionSmall {
+		opacity: 0.69;
+	}
+	.homeDescriptionSmall img {
+		width: 24px;
+		height: 24px;
+		margin-right: 0.25rem;
+	}
 }
 
 .homeContent {
@@ -135,6 +146,9 @@
 		max-width: 100%;
 		font-size: var(--fs-500);
 	}
+	.homeDescriptionSmall {
+		font-size: var(--fs-300);
+	}
 
 	.homeExtraTitle {
 		font-size: 3.5rem;
@@ -185,6 +199,9 @@
 
 	.homeDescription {
 		font-size: var(--fs-600);
+	}
+	.homeDescriptionSmall {
+		font-size: var(--fs-400);
 	}
 
 	.homeExtraTitle {

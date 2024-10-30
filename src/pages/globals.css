@@ -164,6 +164,10 @@ button {
 	display: flex;
 	align-items: center;
 }
+.flex-down-ver {
+	display: flex;
+	align-items: flex-start;
+}
 .flex-center-hor {
 	display: flex;
 	justify-content: center;
