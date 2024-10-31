@@ -17,6 +17,14 @@ export default function Paage() {
 		);
 	};
 
+	const isLinkEmbed = (url) => {
+		return (
+			url.includes("facebook") ||
+			url.includes("drive.google.com") ||
+			url.includes("youtube")
+		);
+	};
+
 	useEffect(() => {
 		if (router.isReady) fetchData();
 	}, [router.isReady]);
@@ -72,7 +80,7 @@ export default function Paage() {
 									</div>
 									<div className="projectInfos" style={{ marginTop: "3rem" }}>
 										<div>
-											{project.demoURL && (
+											{project.demoURL && !isLinkEmbed(project.demoURL) && (
 												<div>
 													<span className="projectYear">
 														<a
@@ -88,6 +96,28 @@ export default function Paage() {
 											)}
 										</div>
 									</div>
+									{project.demoURL && isLinkEmbed(project.demoURL) && (
+										<div
+											style={{
+												position: "relative",
+												paddingBottom: `${(9 / 16) * 100}%`,
+											}}
+										>
+											<iframe
+												style={{
+													position: "absolute",
+													width: "100%",
+													height: "100%",
+												}}
+												src={project.demoURL}
+												title={project.name}
+												frameborder="0"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+												referrerpolicy="strict-origin-when-cross-origin"
+												allowfullscreen
+											></iframe>
+										</div>
+									)}
 								</div>
 							</div>
 						)}
