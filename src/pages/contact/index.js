@@ -1,5 +1,5 @@
-import Page from '@/components/page';
-import Topnav from '@/components/Topnav';
+import Page from "@/components/page";
+import Topnav from "@/components/Topnav";
 
 export default function Contact() {
 	return (
@@ -14,12 +14,11 @@ export default function Contact() {
 				</div>
 				<div className="contactItem">
 					<p>
-						Email:{' '}
+						Email:{" "}
 						<a href="mailto:ryeofficial13@gmail.com" className="text-link">
 							ryeofficial13@gmail.com
 						</a>
 					</p>
-					<p>Phone: +8801840054144</p>
 					<div className="contactLinks">
 						<p>On the internet:&nbsp;</p>
 						<div className="contactLinkItems">
