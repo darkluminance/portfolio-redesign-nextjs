@@ -6,10 +6,12 @@ import Page from "@/components/page";
 import Skills from "@/components/Skills";
 import Workexperiences from "@/components/WorkExperiences";
 import Educations from "@/components/Educations";
-import * as PORTFOLIO_API from "@/utils/globalAPIs";
-import { fetchData } from "@/utils/globalFunctions";
+import { useDataContext } from "@/context/DataContext";
 
-export default function About({ experienceData, skillsData, educationData }) {
+export default function About() {
+	const { experienceData, skillsData, educationData, isDataLoaded } =
+		useDataContext();
+
 	return (
 		<Page>
 			<Topnav></Topnav>
@@ -71,46 +73,35 @@ export default function About({ experienceData, skillsData, educationData }) {
 						</div>
 					</div>
 				</div>
-				<div className="aboutContent">
-					<Workexperiences workexperiences={experienceData}></Workexperiences>
-				</div>
-				<div className="aboutContent">
-					<Skills skills={skillsData}></Skills>
 
-					<div className="aboutResume">
-						<Link href="/about/cv" target="_blank">
-							<div className="aboutResumeBtn flex-center-full">
-								Check out my Resume
+				{isDataLoaded && (
+					<div>
+						<div className="aboutContent">
+							<Workexperiences
+								workexperiences={experienceData}
+							></Workexperiences>
+						</div>
+						<div className="aboutContent">
+							<Skills skills={skillsData}></Skills>
+							<div className="aboutResume">
+								<Link href="/about/cv" target="_blank">
+									<div className="aboutResumeBtn flex-center-full">
+										Check out my Resume
+									</div>
+								</Link>
 							</div>
-						</Link>
+						</div>
+						<div className="aboutContent">
+							<Educations educations={educationData}></Educations>
+						</div>
 					</div>
-				</div>
-				<div className="aboutContent">
-					<Educations educations={educationData}></Educations>
-				</div>
+				)}
+				{!isDataLoaded && (
+					<div className="loadingContainer">
+						<div className="loadingContent">Loading...</div>
+					</div>
+				)}
 			</div>
 		</Page>
 	);
-}
-
-export async function getServerSideProps(context) {
-	const { req } = context;
-
-	const baseUrl = req
-		? `${
-				req.protocol
-					? req.protocol
-					: req.headers["x-forwarded-proto"]
-					? req.headers["x-forwarded-proto"]
-					: "http"
-		  }://${req.headers.host}`
-		: "";
-
-	const experienceData = await fetchData(
-		baseUrl + PORTFOLIO_API.EXPERIENCES_API
-	);
-	const skillsData = await fetchData(baseUrl + PORTFOLIO_API.SKILLS_API);
-	const educationData = await fetchData(baseUrl + PORTFOLIO_API.EDUCATION_API);
-
-	return { props: { experienceData, skillsData, educationData } };
 }

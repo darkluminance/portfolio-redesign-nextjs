@@ -20,6 +20,9 @@ import camera from "@/assets/homeicons/camera.png";
 import film from "@/assets/homeicons/film.png";
 import tv from "@/assets/homeicons/tv.png";
 import tools from "@/assets/homeicons/tools.png";
+import { useDataContext } from "@/context/DataContext";
+import { fetchImgData } from "@/utils/globalFunctions";
+import { Suspense, useEffect, useState } from "react";
 
 export default function HomePage() {
 	return (
@@ -38,15 +41,17 @@ export default function HomePage() {
 					</p>
 					<p className="homeDescription homeDescriptionSmall flex flex-down-ver">
 						<Image src={job} />
-						Software Engineer at&nbsp;
-						<span className="homeDescriptionWorkplace">Enosis Solutions</span>
+						<span>
+							Software Engineer at&nbsp;
+							<span className="homeDescriptionWorkplace">Enosis Solutions</span>
+						</span>
 					</p>
 				</div>
 			</main>
 			<HomeAbout></HomeAbout>
 			<HomeWorkSkills></HomeWorkSkills>
 			<HomeInterests></HomeInterests>
-			{/* <FeaturedWorks></FeaturedWorks> */}
+			<FeaturedWorks></FeaturedWorks>
 		</div>
 	);
 }
@@ -241,14 +246,62 @@ function HomeInterests() {
 }
 
 function FeaturedWorks() {
+	const { projectData, thumbnailData, isDataLoaded } = useDataContext();
+	const featuredList = ["maze_generator", "todolist"];
+	const [featuredProjectList, setFeatureProjectData] = useState([]);
+	const [projectThumbnails, setprojectThumbnails] = useState([]);
+
+	async function getThumbnails() {
+		const featuredProjects = projectData?.filter(
+			(project) =>
+				project.thumbnailURL === featuredList[0] ||
+				project.thumbnailURL === featuredList[1]
+		);
+		const featuredThumnbailList = thumbnailData?.filter(
+			(thumb) =>
+				thumb.public_id.slice(9) === featuredList[0] ||
+				thumb.public_id.slice(9) === featuredList[1]
+		);
+
+		setFeatureProjectData(featuredProjects);
+
+		const thumbnails = await fetchImgData(featuredThumnbailList);
+		setprojectThumbnails(thumbnails);
+	}
+
+	useEffect(() => {
+		if (isDataLoaded) {
+			getThumbnails();
+		}
+	}, [isDataLoaded]);
+
 	return (
 		<div className="homeContent">
 			<h1 className="homeExtraTitle">Featured Works</h1>
-			<div className="homeFeaturedWorksContent homeExtraContent">
-				<div>Featured Work 1</div>
-				<div>Featured Work 2</div>
-				<div>Featured Work 3</div>
-			</div>
+			{isDataLoaded && featuredProjectList && (
+				<div className="homeFeaturedWorksContent homeExtraContent">
+					<Suspense>
+						{featuredProjectList.map((project, index) => (
+							<Link href={`/work/${encodeURIComponent(project.thumbnailURL)}`}>
+								<div className="pics" key={index} onClick={() => {}}>
+									<img
+										src={projectThumbnails[project.thumbnailURL]}
+										alt=""
+										loading="lazy"
+									/>
+									<div className="info flex flex-col flex-gap-1" key={index}>
+										<h2>{project.name}</h2>
+										<p>{project.description}</p>
+									</div>
+								</div>
+							</Link>
+						))}
+					</Suspense>
+					<Link href="/work" className="text-link">
+						Check out more
+					</Link>
+				</div>
+			)}
 		</div>
 	);
 }

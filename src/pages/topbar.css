@@ -8,12 +8,21 @@
 		width: auto;
 	}
 
+	.ryeLogo .darkModeBtn {
+		&:hover {
+			cursor: pointer;
+			opacity: 0.69;
+			transform: scale(0.8);
+		}
+	}
+
 	.navItems {
 		.navClose {
 			position: absolute;
 			top: 2rem;
 			left: 2rem;
 			z-index: 100;
+			color: var(--primary-color);
 
 			&:hover {
 				opacity: 0.69;
@@ -34,6 +43,10 @@
 				}
 			}
 		}
+	}
+
+	.nav-active {
+		z-index: 99;
 	}
 
 	.hamburgerMenu {

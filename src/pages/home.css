@@ -130,6 +130,37 @@
 	margin-left: 0;
 }
 
+.homeFeaturedWorksContent {
+	display: grid;
+	gap: 2rem;
+	grid-auto-rows: auto;
+
+	.pics {
+		border: 1px solid var(--light-border-color);
+		border-radius: var(--border-radius);
+		padding: 2rem;
+		height: 100%;
+		font-weight: var(--fw-400);
+		letter-spacing: 1px;
+
+		h2 {
+			text-transform: uppercase;
+		}
+
+		&:hover {
+			background-color: var(--primary-color-10);
+		}
+	}
+
+	.pics img {
+		width: 100%;
+		margin-bottom: 1rem;
+		object-fit: cover;
+		transition: transform 0.5s;
+		border-radius: var(--image-border-radius);
+	}
+}
+
 @media (min-width: 35rem) {
 	main {
 		display: flex;
@@ -222,6 +253,10 @@
 				}
 			}
 		}
+	}
+
+	.homeFeaturedWorksContent {
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.homeInterestsContent {

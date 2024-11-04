@@ -12,6 +12,9 @@
 		'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace; */
 
 	--primary-color: #eee;
+	--primary-color-10: #ddd;
+	--primary-color-20: #ccc;
+	--primary-color-30: #bbb;
 	--primary-dark-color: #333;
 	--primary-dark-color-lighter: #888888;
 	--primary-dark-color-border: #33333350;

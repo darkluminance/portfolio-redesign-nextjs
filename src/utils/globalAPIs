@@ -1,4 +1,1 @@
-export const EXPERIENCES_API = "/api/workexperiences";
-export const SKILLS_API = "/api/skills";
-export const EDUCATION_API = "/api/education";
-export const PROJECTS_API = "/api/projects";
+export const CV_API = "/api/cv";
