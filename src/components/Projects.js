@@ -1,56 +1,26 @@
 import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
-import { PROJECTS_API } from "@/utils/globalAPIs";
+import { useDataContext } from "@/context/DataContext";
+import { fetchImgData } from "@/utils/globalFunctions";
 
 export default function Projects() {
-	const [projects, setprojects] = useState([]);
+	const { projectData, thumbnailData, isDataLoaded } = useDataContext();
 	const [projectThumbnails, setprojectThumbnails] = useState([]);
 
-	const thumbnailDataURL = process.env.NEXT_PUBLIC_THUMBNAIL_DATA_URL;
-
-	const fetchImgData = async () => {
-		return fetch(thumbnailDataURL).then(async (response) => {
-			const res = await response.json();
-			let data = res.resources;
-			let thumbnailUrl = {};
-			const deviceWidth = window.innerWidth;
-			const projectThumbnailSize = Math.floor(deviceWidth / 2);
-
-			data.forEach((element) => {
-				const key = element.public_id.slice(9);
-
-				thumbnailUrl[key] =
-					"https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_" +
-					projectThumbnailSize +
-					"/v" +
-					element.version +
-					"/" +
-					element.public_id +
-					"." +
-					element.format;
-			});
-
-			setprojectThumbnails(thumbnailUrl);
-		});
-	};
-
-	const fetchData = async () => {
-		return fetch(PROJECTS_API).then(async (response) => {
-			let res = await response.json();
-			setprojects(res.data);
-		});
+	const setImgData = async () => {
+		const imgs = await fetchImgData(thumbnailData);
+		setprojectThumbnails(imgs);
 	};
 
 	useEffect(() => {
-		fetchData();
-		fetchImgData();
-	}, []);
+		setImgData();
+	}, [isDataLoaded]);
 
 	return (
 		<div className="projectContainer ">
 			<div className="project">
-				{projects &&
-					Object.values(projects).map((key, index) => {
+				{isDataLoaded &&
+					Object.values(projectData).map((key, index) => {
 						return (
 							key.thumbnailURL && (
 								<Suspense>
@@ -79,6 +49,11 @@ export default function Projects() {
 							)
 						);
 					})}
+				{!isDataLoaded && (
+					<div className="loadingContainer">
+						<div className="loadingContent">Loading...</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

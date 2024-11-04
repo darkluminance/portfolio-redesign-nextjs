@@ -22,20 +22,17 @@ export default function Topbar() {
 			>
 				{/* <div className="navItemsBackdrop"></div> */}
 				<div className="navClose" onClick={() => setnavMenuOpen(false)}>
-					<Image src={closeButton} alt="Close button"></Image>
+					{/* <Image src={closeButton} alt="Close button"></Image> */}
+					Close
 				</div>
 				<ul className="navList flex-row">
 					<li className="navList-Item">
-						<Link
-							href="/about/cv"
-							target="__blank"
-							className="text-link italic"
-						>
+						<Link href="/about/cv" className="text-link italic">
 							CV
 						</Link>
 					</li>
 					<li className="navList-Item">
-						<Link href="/about" target="__blank" className="text-link italic">
+						<Link href="/about" className="text-link italic">
 							About
 						</Link>
 					</li>
