@@ -30,3 +30,16 @@ export const fetchImgData = async (data) => {
 
 	return thumbnailUrl;
 };
+
+export const getAge = () => {
+	const dateOfBirth = new Date(1998, 7, 23);
+	const currentDate = new Date();
+	const age = Math.abs(
+		Math.floor(
+			(currentDate.getTime() - dateOfBirth.getTime()) /
+				(1000 * 3600 * 24 * 365.25)
+		)
+	);
+
+	return age;
+};

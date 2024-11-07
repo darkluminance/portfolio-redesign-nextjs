@@ -34,7 +34,7 @@ export default function About() {
 							creating new things and sharing them through social media. I am a
 							tech enthusiast, and also love to explore new places and capture
 							moments through photography. I often create cinematic videos of my
-							travels and produce digital art.
+							travels, produce digital art and also make games as a hobby
 						</p>
 						<div className="aboutMyPhotographyBtn">
 							{/* <NavLink to="/resume">
@@ -47,11 +47,6 @@ export default function About() {
 								<span>Check out my clicks</span>
 							</Link>
 						</div>
-						<p id="p4">
-							I also make games as a hobby and am particularly proud of my
-							achievement in releasing one of the first indie fan-made Pokémon
-							games in Bangladesh at the age of 19.
-						</p>
 						<div id="p6">
 							<h4>My hobbies</h4>
 							<ul className="aboutHobbyList flex-wrap">

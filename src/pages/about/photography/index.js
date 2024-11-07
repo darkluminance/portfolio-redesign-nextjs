@@ -1,11 +1,11 @@
-import Topnav from '@/components/Topnav';
-import Gallery from '@/components/Gallery';
-import Page from '@/components/page';
+import Topnav from "@/components/Topnav";
+import Gallery from "@/components/Gallery";
+import Page from "@/components/page";
 
 export default function Photography() {
 	return (
 		<Page>
-			<Topnav routeLink="/about" routeName="ABOUT"></Topnav>
+			<Topnav></Topnav>
 			<div className="page photographyPage flex-center-hor">
 				<div className="pageContent">
 					<h1 className="pageHeader">My Photographs</h1>

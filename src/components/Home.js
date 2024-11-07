@@ -1,27 +1,14 @@
 import Image from "next/image";
 import Topbar from "./Topbar";
-import me from "@/assets/images/homeMe-2.jpg";
 import Link from "next/link";
 
-import webdev from "@/assets/homeicons/webdev.svg";
-import game from "@/assets/homeicons/game.svg";
-import ui from "@/assets/homeicons/ui.svg";
-import graphics from "@/assets/homeicons/graphics.svg";
-import art from "@/assets/homeicons/art.svg";
-import video from "@/assets/homeicons/video.svg";
-import phone from "@/assets/homeicons/phone.svg";
+import minecraft from "@/assets/game_covers/minecraft.jpg";
+import totk from "@/assets/game_covers/totk.jpg";
+import nier_automata from "@/assets/game_covers/nier_automata.jpg";
+import legends_arceus from "@/assets/game_covers/legends_arceus.jpg";
 
-import location from "@/assets/homeicons/location.svg";
-import job from "@/assets/homeicons/job.svg";
-
-import coding from "@/assets/homeicons/coding.png";
-import travel from "@/assets/homeicons/travel.png";
-import camera from "@/assets/homeicons/camera.png";
-import film from "@/assets/homeicons/film.png";
-import tv from "@/assets/homeicons/tv.png";
-import tools from "@/assets/homeicons/tools.png";
 import { useDataContext } from "@/context/DataContext";
-import { fetchImgData } from "@/utils/globalFunctions";
+import { fetchImgData, getAge } from "@/utils/globalFunctions";
 import { Suspense, useEffect, useState } from "react";
 
 export default function HomePage() {
@@ -32,214 +19,99 @@ export default function HomePage() {
 				<div className="homeTextcontent">
 					<h1 className="homeTitle">Hi there, I'm</h1>
 					<h1 className="homeTitle">Raiyan Abrar,</h1>
-					<p className="homeDescription homeTopDescription">
-						A Developer, Designer, and Art Enthusiast.
+					<p className="homeDescriptionLong">
+						I'm a {getAge()}y old{" "}
+						<span className="strong">Software Engineer</span> from{" "}
+						<span className="strong">Dhaka, Bangladesh</span>. I graduated in
+						2023 with a CS major and am currently employed at{" "}
+						<span className="strong">Enosis Solutions</span> working primarily
+						on an interactive 3D application for{" "}
+						<span className="strong">webVR/AR devices.</span>
 					</p>
-					<p className="homeDescription homeDescriptionSmall flex flex-down-ver">
-						<Image src={location} />
-						Dhaka, Bangladesh
+					<p className="homeDescriptionLong">
+						I love to <span className="strong">travel</span>, especially to the{" "}
+						<span className="strong">mountains</span>, and take photos. I often
+						play video games and watch anime in my free time and am a big fan of{" "}
+						<span className="strong">Attack on Titan.</span> As a coder, I'm
+						mostly a <span className="strong">frontend</span> guy because my big
+						love towards <span className="strong">arts and designs</span> and
+						ocassionally do <span className="strong">Game Dev</span> as a hobby.
+						My big dream is to someday own a{" "}
+						<span className="strong">cat.</span>
 					</p>
-					<p className="homeDescription homeDescriptionSmall flex flex-down-ver">
-						<Image src={job} />
-						<span>
-							Software Engineer at&nbsp;
-							<span className="homeDescriptionWorkplace">Enosis Solutions</span>
-						</span>
-					</p>
+					<p className="homeDescriptionEnd"> - A Coffee Lover</p>
+				</div>
+				<div className="homeTextcontent">
+					<MySkills></MySkills>
+				</div>
+				<div className="homeTextcontent">
+					<FeaturedWorks></FeaturedWorks>
+				</div>
+				<div className="homeTextcontent">
+					<FavoriteGames></FavoriteGames>
 				</div>
 			</main>
-			<HomeAbout></HomeAbout>
-			<HomeWorkSkills></HomeWorkSkills>
-			<HomeInterests></HomeInterests>
-			<FeaturedWorks></FeaturedWorks>
 		</div>
 	);
 }
 
-function HomeAbout() {
-	const dateOfBirth = new Date(1998, 7, 23);
-	const currentDate = new Date();
-	const age = Math.abs(
-		Math.floor(
-			(currentDate.getTime() - dateOfBirth.getTime()) /
-				(1000 * 3600 * 24 * 365.25)
-		)
-	);
+function MySkills() {
+	const { skillsData, isDataLoaded } = useDataContext();
 
-	return (
-		<div className="homeAbout homeContent">
-			<h1 className="homeExtraTitle">Who am I</h1>
-			<div className="homeAboutContent homeExtraContent">
-				<div className="homeAboutDescriptions">
-					<p className="homeExtraDescription">
-						A {age}y old with love for nature and creativity.
-					</p>
-					<p className="homeExtraDescription">
-						Graduated in 2023 with a Computer Science major.
-					</p>
-					<p className="homeExtraDescription">
-						Currently working as a Software Engineer.
-					</p>
-					<p className="homeExtraDescription">
-						Mostly a fan of JS frameworks and 3D environments.
-					</p>
-					<br></br>
-					<Link
-						href="/about"
-						target="__blank"
-						className="text-link italic"
-						style={{
-							textDecoration: "underline",
-							display: "inline-block",
-						}}
-					>
-						<p className="homeExtraDescription">Learn more</p>
-					</Link>
-				</div>
-				<div className="homeAboutPic">
-					<Image src={me} alt="" />
-				</div>
-			</div>
-		</div>
-	);
-}
-
-function HomeWorkSkills() {
 	return (
 		<div className="homeContent">
-			<h1 className="homeExtraTitle">What I can do</h1>
-			<div className="homeWorkSkillsContent homeExtraContent">
-				<ul>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">Web Development</div>
-							{/* <div className="workSkillsContentDescription">
-								Crafting modern and appealing websites that visitors remember
-							</div> */}
-						</div>
-						<Image src={webdev} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">Game Development</div>
-							{/* <div className="workSkillsContentDescription">
-								Designing and Creating interesting games out of passion
-							</div> */}
-						</div>
-						<Image src={game} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">App Development</div>
-							{/* <div className="workSkillsContentDescription">
-								Coding intuitive and function applications for the mobile
-							</div> */}
-						</div>
-						<Image src={phone} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">Video Editing</div>
-							{/* <div className="workSkillsContentDescription">
-								Bringing stories to life through cinematic and motion videos
-							</div> */}
-						</div>
-						<Image src={video} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">UI/UX Design</div>
-							{/* <div className="workSkillsContentDescription">
-								Developing intuitive visually appealing interfaces for the user
-							</div> */}
-						</div>
-						<Image src={ui} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">Graphics Design</div>
-							{/* <div className="workSkillsContentDescription">
-								Making stunning visual assets and designs
-							</div> */}
-						</div>
-						<Image src={graphics} />
-					</li>
-					<li className="flex flex-row flex-space-between flex-center-ver flex-gap-2">
-						<div className="flex flex-col">
-							<div className="workSkillsContentTitle">Digital Art</div>
-							{/* <div className="workSkillsContentDescription">
-								Bringing imaginations to life through digital canvas
-							</div> */}
-						</div>
-						<Image src={art} />
-					</li>
-				</ul>
-			</div>
+			<h2 className="homeTitle">Tech Stack</h2>
+			{isDataLoaded && (
+				<div className="aboutCategorySkills homeExtraContent">
+					<span>Typescript</span>
+					<span>NextJS</span>
+					<span>VueJS</span>
+					<span>ThreeJS</span>
+					<span>MongoDB</span>
+					<span>ExpressJS</span>
+					<span>Bitbucket</span>
+					<span>Jira</span>
+				</div>
+			)}
 		</div>
 	);
 }
 
-function HomeInterests() {
+function FavoriteGames() {
+	const gameData = [
+		{
+			title: "Minecraft",
+			image: minecraft,
+		},
+		{
+			title: "Legend of Zelda: Tears of the Kingdom",
+			image: totk,
+		},
+		{
+			title: "Nier: Automata",
+			image: nier_automata,
+		},
+		{
+			title: "Pokemon: Legends Arceus",
+			image: legends_arceus,
+		},
+	];
+
 	return (
 		<div className="homeContent">
-			<h1 className="homeExtraTitle">What I love to do</h1>
-			<div className="homeInterestsContent homeExtraContent">
-				<ul>
-					<li className="flex flex-col flex-center-hor flex-center-hor ">
-						<div>
-							<Image src={travel} />
+			<h1 className="homeTitle">Favorite Games</h1>
+
+			<div className="homeFeaturedWorksContent homeExtraContent">
+				{gameData.map((game, index) => (
+					<div className="pics" key={index} onClick={() => {}}>
+						<div className="gameImage">
+							<Image src={game.image} alt="" loading="lazy" />
 						</div>
-						<div className="workInterestsContentTitle">Travelling</div>
-						{/* <div className="workInterestsContentDescription">
-							Exploring new places, especially mountains
-						</div> */}
-					</li>
-					<li className="flex flex-col flex-center-hor flex-center-hor ">
-						<div>
-							<Image src={camera} />
+						<div className="info flex flex-col flex-gap-1">
+							<h2>{game.title}</h2>
 						</div>
-						<div className="workInterestsContentTitle">Photography</div>
-						{/* <div className="workInterestsContentDescription">
-							Capturing the mesmurizing beauty of the world
-						</div> */}
-					</li>
-					<li className="flex flex-col flex-center-hor flex-center-hor ">
-						<div>
-							<Image src={film} />
-						</div>
-						<div className="workInterestsContentTitle">Film-making</div>
-						{/* <div className="workInterestsContentDescription">
-							Bringing my travel stories to life through cinema
-						</div> */}
-					</li>
-					<li className="flex flex-col flex-center-hor flex-center-ver ">
-						<div>
-							<Image src={tv} />
-						</div>
-						<div className="workInterestsContentTitle">Anime & TV shows</div>
-						{/* <div className="workInterestsContentDescription">
-							Enjoying wide varieties of stories for time-pass
-						</div> */}
-					</li>
-					<li className="flex flex-col flex-center-hor flex-center-ver ">
-						<div>
-							<Image src={coding} />
-						</div>
-						<div className="workInterestsContentTitle">Coding</div>
-						{/* <div className="workInterestsContentDescription">
-							Wracking up my brains through programming
-						</div> */}
-					</li>
-					<li className="flex flex-col flex-center-hor flex-center-ver ">
-						<div>
-							<Image src={tools} />
-						</div>
-						<div className="workInterestsContentTitle">Making new things</div>
-						{/* <div className="workInterestsContentDescription">
-							Materializing ideas through innovative projects
-						</div> */}
-					</li>
-				</ul>
+					</div>
+				))}
 			</div>
 		</div>
 	);
@@ -277,18 +149,23 @@ function FeaturedWorks() {
 
 	return (
 		<div className="homeContent">
-			<h1 className="homeExtraTitle">Featured Works</h1>
+			<h2 className="homeTitle">Featured Works</h2>
 			{isDataLoaded && featuredProjectList && (
 				<div className="homeFeaturedWorksContent homeExtraContent">
 					<Suspense>
 						{featuredProjectList.map((project, index) => (
-							<Link href={`/work/${encodeURIComponent(project.thumbnailURL)}`}>
-								<div className="pics" key={index} onClick={() => {}}>
-									<img
-										src={projectThumbnails[project.thumbnailURL]}
-										alt=""
-										loading="lazy"
-									/>
+							<Link
+								href={`/work/${encodeURIComponent(project.thumbnailURL)}`}
+								key={index}
+							>
+								<div className="pics" onClick={() => {}}>
+									<div className="featuredWorksThumbnail">
+										<img
+											src={projectThumbnails[project.thumbnailURL]}
+											alt=""
+											loading="lazy"
+										/>
+									</div>
 									<div className="info flex flex-col flex-gap-1" key={index}>
 										<h2>{project.name}</h2>
 										<p>{project.description}</p>

@@ -1,8 +1,10 @@
 .homeTextcontent {
 	/* letter-spacing: normal; */
-	padding-top: 8%;
+	padding-block: 6%;
 	line-height: 1.5;
-	height: 100vh;
+	/* height: 100vh; */
+	width: 100%;
+	max-width: 690px;
 
 	.homeTitle {
 		text-transform: uppercase;
@@ -17,20 +19,30 @@
 		}
 	}
 	.homeTopDescription {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	}
-	.homeDescriptionSmall {
-		opacity: 0.69;
+	.homeDescriptionSmall span {
+		opacity: 0.8;
 	}
 	.homeDescriptionSmall img {
 		width: 24px;
 		height: 24px;
 		margin-right: 0.25rem;
 	}
+	.homeDescriptionLong {
+		margin-top: 2rem;
+		font-weight: var(--fw-300);
+
+		.strong {
+			font-weight: var(--fw-600);
+		}
+	}
+	.homeDescriptionEnd {
+		margin-top: 2rem;
+	}
 }
 
 .homeContent {
-	min-height: 100vh;
 	border-top: 1px solid var(--light-border-color);
 	margin-bottom: 5rem;
 }
@@ -126,19 +138,22 @@
 	margin-bottom: 2rem;
 }
 
+.homeExtraContent {
+	margin-top: 3rem;
+}
 .homeExtraContent ul {
 	margin-left: 0;
 }
 
 .homeFeaturedWorksContent {
 	display: grid;
-	gap: 2rem;
+	grid-gap: 1rem;
 	grid-auto-rows: auto;
 
 	.pics {
 		border: 1px solid var(--light-border-color);
 		border-radius: var(--border-radius);
-		padding: 2rem;
+		padding: 1rem;
 		height: 100%;
 		font-weight: var(--fw-400);
 		letter-spacing: 1px;
@@ -152,12 +167,17 @@
 		}
 	}
 
-	.pics img {
+	.pics .featuredWorksThumbnail img {
 		width: 100%;
 		margin-bottom: 1rem;
 		object-fit: cover;
 		transition: transform 0.5s;
 		border-radius: var(--image-border-radius);
+	}
+
+	.pics .gameImage img {
+		width: 100%;
+		height: auto;
 	}
 }
 
@@ -206,7 +226,10 @@
 
 @media (min-width: 65rem) {
 	.homeContent {
-		padding: 4%;
+		padding-block: 4%;
+	}
+	.homeTextcontent {
+		width: 80vw;
 	}
 
 	.homeAboutContent {
@@ -224,7 +247,7 @@
 	}
 
 	.homeTitle {
-		font-size: min(200px, 4vw);
+		font-size: min(200px, 3vw);
 		font-weight: var(--fw-600);
 	}
 
@@ -232,6 +255,9 @@
 		font-size: var(--fs-600);
 	}
 	.homeDescriptionSmall {
+		font-size: var(--fs-400);
+	}
+	.homeDescriptionLong {
 		font-size: var(--fs-400);
 	}
 

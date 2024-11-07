@@ -1,9 +1,9 @@
 function Skills({ skills }) {
 	return (
 		<>
-			<h1>Skills</h1>
+			<h2 className="homeTitle">Tech Stack</h2>
 			<div className="aboutSkillContainer">
-				{skills &&
+				{/* {skills &&
 					skills.map((skill) => (
 						<div
 							key={skill._id}
@@ -14,7 +14,15 @@ function Skills({ skills }) {
 								<span key={categorySkill}>{categorySkill}</span>
 							))}
 						</div>
-					))}
+					))} */}
+				<div className="aboutCategorySkills homeExtraContent">
+					<span>Typescript</span>
+					<span>NextJS</span>
+					<span>VueJS</span>
+					<span>ThreeJS</span>
+					<span>MongoDB</span>
+					<span>ExpressJS</span>
+				</div>
 			</div>
 		</>
 	);

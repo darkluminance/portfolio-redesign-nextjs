@@ -1,7 +1,7 @@
-import axios from 'axios';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import close from '@/assets/images/close.png';
+import axios from "axios";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import close from "@/assets/images/close.png";
 
 export default function Gallery() {
 	const [photos, setPhotos] = useState([]);
@@ -9,7 +9,7 @@ export default function Gallery() {
 	const [smallphotos, setsmallPhotos] = useState([]);
 
 	const originalURL =
-		'https://res.cloudinary.com/dwyosqxlr/image/list/gallery-xl.json';
+		"https://res.cloudinary.com/dwyosqxlr/image/list/gallery-xl.json";
 
 	const fetchData = () => {
 		return axios.get(originalURL).then((response) => {
@@ -25,33 +25,32 @@ export default function Gallery() {
 				const key = element.public_id.slice(11);
 
 				url[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/v' +
+					"https://res.cloudinary.com/dwyosqxlr/image/upload/v" +
 					element.version +
-					'/' +
+					"/" +
 					element.public_id +
-					'.' +
+					"." +
 					element.format;
 
 				loaderUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_10/v' +
+					"https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_10/v" +
 					element.version +
-					'/' +
+					"/" +
 					element.public_id +
-					'.' +
+					"." +
 					element.format;
 
 				thumbnailUrl[key] =
-					'https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_' +
+					"https://res.cloudinary.com/dwyosqxlr/image/upload/c_thumb,w_" +
 					projectThumbnailSize +
-					'/v' +
+					"/v" +
 					element.version +
-					'/' +
+					"/" +
 					element.public_id +
-					'.' +
+					"." +
 					element.format;
 			});
 
-			console.log(url, loaderUrl, thumbnailUrl);
 			setPhotos(url);
 			setThumbnailPhotos(thumbnailUrl);
 			setsmallPhotos(loaderUrl);
@@ -62,7 +61,7 @@ export default function Gallery() {
 	}, []);
 
 	const [model, setModel] = useState(false);
-	const [tmpImgSrc, setTmpImgSrc] = useState('');
+	const [tmpImgSrc, setTmpImgSrc] = useState("");
 
 	const getImg = (img) => {
 		setTmpImgSrc(img);
@@ -71,7 +70,7 @@ export default function Gallery() {
 
 	return (
 		<div className="galleryContainer ">
-			<div className={model ? 'model imgViewer flex-center-full' : 'model'}>
+			<div className={model ? "model imgViewer flex-center-full" : "model"}>
 				{/* <img src={tmpImgSrc} alt="" /> */}
 				<img src={tmpImgSrc} />
 				<Image
@@ -87,7 +86,7 @@ export default function Gallery() {
 					return (
 						<div
 							className="pics"
-							style={{ backgroundImage: 'url(' + smallphotos[key] + ')' }}
+							style={{ backgroundImage: "url(" + smallphotos[key] + ")" }}
 							key={key}
 							onClick={() => getImg(photos[key])}
 						>
