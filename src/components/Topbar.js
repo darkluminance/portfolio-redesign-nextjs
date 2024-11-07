@@ -32,13 +32,13 @@ export default function Topbar() {
 						</Link>
 					</li>
 					<li className="navList-Item">
-						<Link href="/about" className="text-link italic">
-							About
+						<Link href="/work" className="text-link italic">
+							Works
 						</Link>
 					</li>
 					<li className="navList-Item">
-						<Link href="/work" className="text-link italic">
-							Works
+						<Link href="/about/photography" className="text-link italic">
+							Gallery
 						</Link>
 					</li>
 					<li className="navList-Item">

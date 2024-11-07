@@ -116,6 +116,9 @@
 }
 
 .aboutCategorySkills {
+	display: grid;
+	grid-gap: 2rem;
+
 	h3 {
 		width: 100%;
 		margin-bottom: 1rem;
@@ -123,9 +126,20 @@
 		letter-spacing: 2px;
 	}
 
-	span {
+	/* span {
 		padding-inline: 0.5rem;
 		border-right: 1px solid;
+	} */
+	span {
+		text-align: center;
+		padding: 2rem;
+		border: 1px solid var(--light-border-color);
+		border-radius: var(--border-radius);
+		cursor: pointer;
+
+		&:hover {
+			filter: drop-shadow(1px 1px 2px var(--light-border-color));
+		}
 	}
 }
 
@@ -197,6 +211,10 @@
 		grid-gap: 4rem;
 		margin: 2rem;
 		max-width: var(--max-width-container);
+	}
+
+	.aboutCategorySkills {
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 
 	.aboutSideContent {
