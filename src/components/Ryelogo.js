@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ryelogo from "../assets/images/signature.png";
-import nightmode from "../assets/homeicons/nightmode.svg";
+import nightmode from "../assets/images/nightmode.svg";
 
 export default function Ryelogo() {
 	return (
