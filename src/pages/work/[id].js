@@ -1,20 +1,20 @@
 import Topnav from "@/components/Topnav";
 import Page from "@/components/page";
 import { useEffect, useState } from "react";
+import { useDataContext } from "@/context/DataContext";
 import { useRouter } from "next/router";
-import { PROJECTS_API } from "@/utils/globalAPIs";
 
 export default function Paage() {
 	const router = useRouter();
 	const [project, setproject] = useState([]);
+	const { projectData, isDataLoaded } = useDataContext();
 
-	const fetchData = async () => {
-		return fetch(PROJECTS_API + "/" + router.query.id).then(
-			async (response) => {
-				const res = await response.json();
-				setproject(res.data);
-			}
+	const fetchData = () => {
+		const routedProject = projectData.filter(
+			(project) => project.thumbnailURL === router.query.id
 		);
+
+		if (routedProject) setproject(routedProject[0]);
 	};
 
 	const isLinkEmbed = (url) => {
@@ -26,8 +26,8 @@ export default function Paage() {
 	};
 
 	useEffect(() => {
-		if (router.isReady) fetchData();
-	}, [router.isReady]);
+		if (router.isReady && isDataLoaded) fetchData();
+	}, [router.isReady, isDataLoaded]);
 
 	return (
 		<Page>
@@ -121,6 +121,11 @@ export default function Paage() {
 								</div>
 							</div>
 						)}
+					</div>
+				)}
+				{!isDataLoaded && (
+					<div className="loadingContainer">
+						<div className="loadingContent">Loading...</div>
 					</div>
 				)}
 			</div>

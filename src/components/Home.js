@@ -22,10 +22,9 @@ export default function HomePage() {
 					<p className="homeDescriptionLong">
 						I'm a {getAge()}y old{" "}
 						<span className="strong">Software Engineer</span> from{" "}
-						<span className="strong">Dhaka, Bangladesh</span>. I graduated in
-						2023 with a CS major and am currently employed at{" "}
-						<span className="strong">Enosis Solutions</span> working primarily
-						on an interactive 3D application for{" "}
+						<span className="strong">Dhaka, Bangladesh</span>. I am currently
+						employed at <span className="strong">Enosis Solutions</span> working
+						primarily on an interactive 3D application for{" "}
 						<span className="strong">webVR/AR devices.</span>
 					</p>
 					<p className="homeDescriptionLong">
