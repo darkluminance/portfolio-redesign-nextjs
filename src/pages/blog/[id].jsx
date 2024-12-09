@@ -135,7 +135,7 @@ function Paaage() {
 							</div>
 						</div>
 					)}
-					{!blogItem && <div>Loading...</div>}
+					{/* {!blogItem && <div>Loading...</div>} */}
 				</div>
 			</div>
 		</Page>
