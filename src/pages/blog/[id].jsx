@@ -116,7 +116,7 @@ function Paaage() {
 									onClick={() => setShowCommentComponent(true)}
 								>
 									<Image src={commentIcon}></Image>
-									<span>{blogItem.comments}</span>
+									<span>{blogItem.commentsList.length}</span>
 								</div>
 							</div>
 							<div className="blogItemContent">

@@ -24,7 +24,7 @@ const handler = async (req, res) => {
 
 		// Blog
 		let blogRet = await Blog.find().select(
-			"title description id thumbnail createdAt likes comments"
+			"title description id thumbnail createdAt likes commentsList"
 		);
 
 		// experiences
