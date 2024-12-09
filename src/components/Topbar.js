@@ -42,6 +42,11 @@ export default function Topbar() {
 						</Link>
 					</li>
 					<li className="navList-Item">
+						<Link href="/blog" className="text-link italic">
+							Blog
+						</Link>
+					</li>
+					<li className="navList-Item">
 						<Link href="/contact" className="text-link italic">
 							Contact
 						</Link>

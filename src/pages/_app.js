@@ -19,6 +19,7 @@ import "./cv.css";
 import "./todolist.css";
 import "./dropdown.css";
 import "./sorting.css";
+import "./blog.css";
 
 import { DataProvider } from "@/context/DataContext";
 import { useEffect } from "react";

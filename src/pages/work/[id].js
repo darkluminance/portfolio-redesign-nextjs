@@ -78,11 +78,12 @@ export default function Paage() {
 											{!project.githubURL && <span>N/A</span>}
 										</div>
 									</div>
+									<br></br>
 									<div className="projectInfos" style={{ marginTop: "3rem" }}>
 										<div>
 											{project.demoURL && !isLinkEmbed(project.demoURL) && (
 												<div>
-													<span className="projectYear">
+													<h2 className="projectYear">
 														<a
 															href={project.demoURL}
 															target="_blank"
@@ -91,7 +92,7 @@ export default function Paage() {
 														>
 															Click to view Demo
 														</a>
-													</span>
+													</h2>
 												</div>
 											)}
 										</div>

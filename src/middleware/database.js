@@ -1,7 +1,10 @@
 import connectDb from "@/utils/connectDb";
 import disconnectDb from "@/utils/disconnectDb";
 
-export default function withDatabaseConnection(handler) {
+export default function withDatabaseConnection(
+	handler,
+	shouldDisconnect = false
+) {
 	return async (req, res) => {
 		const startTime = Date.now();
 		console.log("connecting to db");
@@ -13,6 +16,6 @@ export default function withDatabaseConnection(handler) {
 
 		await handler(req, res);
 
-		await disconnectDb();
+		// if (shouldDisconnect) await disconnectDb();
 	};
 }

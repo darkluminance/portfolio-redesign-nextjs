@@ -43,3 +43,24 @@ export const getAge = () => {
 
 	return age;
 };
+
+export const mergeListsById = (list1, list2) => {
+	const map = new Map();
+
+	// Insert all objects from list1 into the map
+	for (const item of list1) {
+		map.set(item._id, item);
+	}
+
+	// Merge objects from list2 into the map
+	for (const item of list2) {
+		if (map.has(item._id)) {
+			Object.assign(map.get(item._id), item);
+		} else {
+			map.set(item._id, { ...item });
+		}
+	}
+
+	// Convert the map values to an array
+	return Array.from(map.values());
+};
