@@ -147,7 +147,8 @@
 	margin-left: 0;
 }
 
-.homeFeaturedWorksContent {
+.homeFeaturedWorksContent,
+.homeFavoriteGamesContent {
 	display: grid;
 	grid-gap: 1rem;
 	grid-auto-rows: auto;
@@ -221,6 +222,10 @@
 			grid-template-columns: 1fr 1fr;
 		}
 	}
+
+	.homeFavoriteGamesContent {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (min-width: 65rem) {
@@ -277,7 +282,7 @@
 	}
 
 	.homeFeaturedWorksContent {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 
 	.homeInterestsContent {

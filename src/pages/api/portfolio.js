@@ -4,6 +4,7 @@ import { Workexperience } from "@/models/WorkExperiences";
 import { parseDateString } from "@/utils/globalFunctions";
 import { Education } from "@/models/Education";
 import { Project } from "@/models/Projects";
+import { Blog } from "@/models/Blog";
 
 const handler = async (req, res) => {
 	if (req.method === "GET") {
@@ -20,6 +21,11 @@ const handler = async (req, res) => {
 
 		// education
 		let educationRet = await Education.find();
+
+		// Blog
+		let blogRet = await Blog.find().select(
+			"title description id thumbnail createdAt likes comments"
+		);
 
 		// experiences
 		let experiencesRet = await Workexperience.find();
@@ -45,6 +51,7 @@ const handler = async (req, res) => {
 				education: educationRet.slice(1),
 				experiences: experiencesRet,
 				projects: projectsRet.slice(0, -1),
+				blog: blogRet,
 			},
 		});
 	}

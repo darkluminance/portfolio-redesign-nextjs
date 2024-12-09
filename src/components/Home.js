@@ -55,23 +55,20 @@ export default function HomePage() {
 }
 
 function MySkills() {
-	const { skillsData, isDataLoaded } = useDataContext();
-
 	return (
 		<div className="homeContent">
-			<h2 className="homeTitle">Tech Stack</h2>
-			{isDataLoaded && (
-				<div className="aboutCategorySkills homeExtraContent">
-					<span>Typescript</span>
-					<span>NextJS</span>
-					<span>VueJS</span>
-					<span>ThreeJS</span>
-					<span>MongoDB</span>
-					<span>ExpressJS</span>
-					<span>Bitbucket</span>
-					<span>Jira</span>
-				</div>
-			)}
+			<h2 className="homeTitle">My Tech Stack</h2>
+
+			<div className="aboutCategorySkills homeExtraContent">
+				<span>Typescript</span>
+				<span>ThreeJS</span>
+				<span>NextJS</span>
+				<span>VueJS</span>
+				<span>ExpressJS</span>
+				<span>MongoDB</span>
+				<span>Bitbucket</span>
+				<span>Jira</span>
+			</div>
 		</div>
 	);
 }
@@ -86,39 +83,33 @@ function FavoriteGames() {
 			title: "Legend of Zelda: Tears of the Kingdom",
 			image: totk,
 		},
-		{
-			title: "Nier: Automata",
-			image: nier_automata,
-		},
-		{
-			title: "Pokemon: Legends Arceus",
-			image: legends_arceus,
-		},
 	];
 
 	return (
 		<div className="homeContent">
 			<h1 className="homeTitle">Favorite Games</h1>
 
-			<div className="homeFeaturedWorksContent homeExtraContent">
-				{gameData.map((game, index) => (
-					<div className="pics" key={index} onClick={() => {}}>
-						<div className="gameImage">
-							<Image src={game.image} alt="" loading="lazy" />
+			<Suspense>
+				<div className="homeFavoriteGamesContent homeExtraContent">
+					{gameData.map((game, index) => (
+						<div className="pics" key={index} onClick={() => {}}>
+							<div className="gameImage">
+								<Image src={game.image} alt="" loading="lazy" />
+							</div>
+							<div className="info flex flex-col flex-gap-1">
+								<h2>{game.title}</h2>
+							</div>
 						</div>
-						<div className="info flex flex-col flex-gap-1">
-							<h2>{game.title}</h2>
-						</div>
-					</div>
-				))}
-			</div>
+					))}
+				</div>
+			</Suspense>
 		</div>
 	);
 }
 
 function FeaturedWorks() {
 	const { projectData, thumbnailData, isDataLoaded } = useDataContext();
-	const featuredList = ["maze_generator", "todolist"];
+	const featuredList = ["maze_generator", "url_shortener"];
 	const [featuredProjectList, setFeatureProjectData] = useState([]);
 	const [projectThumbnails, setprojectThumbnails] = useState([]);
 
