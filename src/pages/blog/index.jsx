@@ -56,7 +56,7 @@ function Blog() {
 													</div>
 													<div className="blogComments flex">
 														<Image src={commentIcon}></Image>
-														<span>{blogItem.comments}</span>
+														<span>{blogItem.commentsList.length}</span>
 													</div>
 												</div>
 											</div>

@@ -6,7 +6,7 @@ const handler = async (req, res) => {
 		const id = req.query.id;
 
 		let ret = await Blog.findById(id).select(
-			"title description id thumbnail createdAt likes comments"
+			"title description id thumbnail createdAt likes commentsList"
 		);
 
 		res.status(200).json({ data: ret });
