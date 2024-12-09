@@ -123,9 +123,7 @@ function Paaage() {
 								<div className="blogItemThumbnail">
 									<img src={blogItem.thumbnail} />
 								</div>
-								<div id="blogContent" ref={blogContentRef}>
-									{!blogItem.content && <div>Loading...</div>}
-								</div>
+								<div id="blogContent" ref={blogContentRef}></div>
 								<br />
 								<br />
 								<div>Raiyan Abrar,</div>
@@ -135,7 +133,7 @@ function Paaage() {
 							</div>
 						</div>
 					)}
-					{/* {!blogItem && <div>Loading...</div>} */}
+					{!blogItem && <div>Loading...</div>}
 				</div>
 			</div>
 		</Page>
