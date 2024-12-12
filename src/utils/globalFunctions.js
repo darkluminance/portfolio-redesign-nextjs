@@ -64,3 +64,15 @@ export const mergeListsById = (list1, list2) => {
 	// Convert the map values to an array
 	return Array.from(map.values());
 };
+
+export const getBaseURL = () => {
+	let baseUrl = "";
+
+	if (typeof window === "undefined") {
+		baseUrl = `${process.env.NEXT_PUBLIC_PROTOCOL || "http"}://${
+			process.env.NEXT_PUBLIC_HOST
+		}`;
+	}
+
+	return baseUrl;
+};

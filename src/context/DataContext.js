@@ -1,5 +1,6 @@
 // context/DataContext.js
-import { fetchData, mergeListsById } from "@/utils/globalFunctions";
+import { getBlogByID } from "@/services/BlogService";
+import { fetchData, getBaseURL, mergeListsById } from "@/utils/globalFunctions";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const DataContext = createContext();
@@ -13,26 +14,20 @@ export const DataProvider = ({ children }) => {
 	const [thumbnailData, setThumbnailData] = useState([]);
 	const [isDataLoaded, setIsDataLoaded] = useState(false);
 
+	const [baseURL, setBaseURL] = useState("");
+
 	let isBlogContentFetching = false;
 
 	useEffect(() => {
+		setBaseURL(getBaseURL());
 		fetch();
 	}, []);
 
 	const fetch = async () => {
-		let baseUrl = "";
 		const thumbnailDataURL = process.env.NEXT_PUBLIC_THUMBNAIL_DATA_URL;
 
-		if (typeof window === "undefined") {
-			baseUrl = `${process.env.NEXT_PUBLIC_PROTOCOL || "http"}://${
-				process.env.NEXT_PUBLIC_HOST
-			}`;
-		} else {
-			baseUrl = "";
-		}
-
 		try {
-			const data = await fetchData(`${baseUrl}/api/portfolio`);
+			const data = await fetchData(`${baseURL}/api/portfolio`);
 			const thumbnailList = await fetchData(thumbnailDataURL);
 
 			// Set data in state and save to localStorage
@@ -49,42 +44,16 @@ export const DataProvider = ({ children }) => {
 	};
 
 	const fetchBlogByID = async (id) => {
-		let baseUrl = "";
-
-		if (typeof window === "undefined") {
-			baseUrl = `${process.env.NEXT_PUBLIC_PROTOCOL || "http"}://${
-				process.env.NEXT_PUBLIC_HOST
-			}`;
-		} else {
-			baseUrl = "";
-		}
-
-		try {
-			const data = await fetchData(`${baseUrl}/api/blog/${id}`);
-
-			return data;
-		} catch (error) {
-			console.error(error);
-		}
+		return getBlogByID(id);
 	};
 
 	const fetchBlogContentByID = async (id, update = true) => {
 		const blog = blogData.filter((item) => item._id === id)[0];
 		if (blog?.content || isBlogContentFetching) return;
 
-		let baseUrl = "";
-
-		if (typeof window === "undefined") {
-			baseUrl = `${process.env.NEXT_PUBLIC_PROTOCOL || "http"}://${
-				process.env.NEXT_PUBLIC_HOST
-			}`;
-		} else {
-			baseUrl = "";
-		}
-
 		try {
 			isBlogContentFetching = true;
-			const data = await fetchData(`${baseUrl}/api/blog/content/${id}`);
+			const data = await fetchData(`${baseURL}/api/blog/content/${id}`);
 			blog.content = data.content;
 			isBlogContentFetching = false;
 
