@@ -11,8 +11,12 @@ import { useRouter } from "next/router";
 import { fetchData } from "@/utils/globalFunctions";
 import Head from "next/head";
 import BlogCommentComponent from "@/components/BlogCommentComponent";
+import {
+	getBlogIDFromTextID,
+	getBlogMetadataFromTextID,
+} from "@/services/BlogService";
 
-function Paaage() {
+function Paaage({ metadata }) {
 	const router = useRouter();
 	const { blogData, fetchBlogContentByID, fetchBlogByID } = useDataContext();
 	const [blogItem, setBlogItem] = useState();
@@ -26,7 +30,7 @@ function Paaage() {
 		let blog_id = blog?._id;
 
 		if (!blog) {
-			blog_id = await fetchData("/api/blog/getID/" + router.query.id);
+			blog_id = await getBlogIDFromTextID(router.query.id);
 
 			if (!blog_id) return;
 
@@ -78,7 +82,8 @@ function Paaage() {
 	return (
 		<Page>
 			<Head>
-				<title>{router.query.id}</title>
+				<title>{metadata.title}</title>
+				<meta property="og:image" content={metadata.thumbnail} />
 			</Head>
 			<Topnav routeLink="/blog" routeName="BLOG"></Topnav>
 			{blogItem && (
@@ -138,6 +143,20 @@ function Paaage() {
 			</div>
 		</Page>
 	);
+}
+
+export async function getServerSideProps(context) {
+	const { id } = context.params;
+	const { req } = context;
+
+	const protocol = req.headers["x-forwarded-proto"] || "http";
+	const host = req.headers.host;
+
+	const baseUrl = `${protocol}://${host}`;
+
+	const metadata = await getBlogMetadataFromTextID(id, baseUrl);
+
+	return { props: { metadata: metadata } };
 }
 
 export default Paaage;
