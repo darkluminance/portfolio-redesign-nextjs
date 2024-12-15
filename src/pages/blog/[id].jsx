@@ -11,79 +11,80 @@ import { useRouter } from "next/router";
 import { fetchData } from "@/utils/globalFunctions";
 import Head from "next/head";
 import BlogCommentComponent from "@/components/BlogCommentComponent";
-import {
-	getBlogIDFromTextID,
-	getBlogMetadataFromTextID,
-} from "@/services/BlogService";
+import { getBlogByID, getBlogIDFromTextID } from "@/services/BlogService";
 
-function Paaage({ metadata }) {
+function Paaage({ blog }) {
 	const router = useRouter();
-	const { blogData, fetchBlogContentByID, fetchBlogByID } = useDataContext();
+	const { blogContents, fetchBlogContentByID } = useDataContext();
 	const [blogItem, setBlogItem] = useState();
 	const [isBlogLiked, setIsBlogLiked] = useState(false);
 	const [showCommentComponent, setShowCommentComponent] = useState(false);
 
 	const blogContentRef = useRef();
 
-	const setBlogData = async () => {
-		let blog = blogData.filter((item) => item.id === router.query.id)[0];
-		let blog_id = blog?._id;
-
-		if (!blog) {
-			blog_id = await getBlogIDFromTextID(router.query.id);
-
-			if (!blog_id) return;
-
-			blog = await fetchBlogByID(blog_id);
-		}
-
-		if (localStorage.getItem("isBlogLiked"))
+	const setBlog = async () => {
+		if (localStorage.getItem("isBlogLiked#" + blog._id))
 			setIsBlogLiked(
-				localStorage.getItem("isBlogLiked") === "true" ? true : false
+				localStorage.getItem("isBlogLiked#" + blog._id) === "true"
+					? true
+					: false
 			);
 
 		setBlogItem(blog);
 	};
 
-	const setBlogContent = async (id) => {
-		const fetchedBlogContent = await fetchBlogContentByID(id, false);
-		setBlogItem((prevState) => ({ ...prevState, content: fetchedBlogContent }));
+	const fetchBlogContent = async () => {
+		if (blogContents[blog._id]) {
+			injectBlogContent(blogContents[blog._id]);
+			return;
+		}
+
+		const fetched = await fetchBlogContentByID(blog._id, false);
+		injectBlogContent(fetched);
+	};
+
+	const injectBlogContent = (content) => {
+		if (content) {
+			setBlogItem((prevState) => ({ ...prevState, content: content }));
+			blogContentRef.current.innerHTML = content;
+		}
 	};
 
 	const toggleLike = async () => {
 		const isLiked = !isBlogLiked;
 		setIsBlogLiked(isLiked);
-		localStorage.setItem("isBlogLiked", isLiked);
+		localStorage.setItem("isBlogLiked#" + blog._id, isLiked);
 
 		const ret = isLiked
-			? await fetchData(`/api/blog/like/add/${blogItem._id}`)
-			: await fetchData(`/api/blog/like/remove/${blogItem._id}`);
+			? await fetchData(`/api/blog/like/add/${blog._id}`)
+			: await fetchData(`/api/blog/like/remove/${blog._id}`);
 
-		const blog = await fetchBlogByID(blogItem._id);
-		setBlogItem(blog);
+		const fetched = await getBlogByID(blog._id);
+		setBlogItem(fetched);
 	};
 
 	useEffect(() => {
-		if (router.isReady && blogData) setBlogData();
+		let timer = setTimeout(() => {
+			if (blogContentRef.current) {
+				fetchBlogContent();
+				clearTimeout(timer);
+			}
+		}, 10);
+
+		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
+		if (router.isReady) {
+			setBlog();
+		}
 	}, [router.isReady]);
-
-	useEffect(() => {
-		if (blogItem && router.isReady && !blogItem.content) {
-			setBlogContent(blogItem._id);
-		}
-	}, [blogItem]);
-
-	useEffect(() => {
-		if (blogItem?.content) {
-			blogContentRef.current.innerHTML = blogItem.content;
-		}
-	}, [blogItem?.content]);
 
 	return (
 		<Page>
 			<Head>
-				<title>{metadata.title}</title>
-				<meta property="og:image" content={metadata.thumbnail} />
+				<title>{blog.title}</title>
+				<meta property="og:image" content={blog.thumbnail} />
 			</Head>
 			<Topnav routeLink="/blog" routeName="BLOG"></Topnav>
 			{blogItem && (
@@ -138,7 +139,7 @@ function Paaage({ metadata }) {
 							</div>
 						</div>
 					)}
-					{!blogItem && <div>Loading...</div>}
+					{!blog && <div>Loading...</div>}
 				</div>
 			</div>
 		</Page>
@@ -154,9 +155,10 @@ export async function getServerSideProps(context) {
 
 	const baseUrl = `${protocol}://${host}`;
 
-	const metadata = await getBlogMetadataFromTextID(id, baseUrl);
+	const _id = await getBlogIDFromTextID(id, baseUrl);
+	const blog = await getBlogByID(_id, baseUrl);
 
-	return { props: { metadata: metadata } };
+	return { props: { blog: blog } };
 }
 
 export default Paaage;
