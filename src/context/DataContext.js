@@ -1,6 +1,5 @@
-// context/DataContext.js
-import { getBlogByID } from "@/services/BlogService";
-import { fetchData, getBaseURL, mergeListsById } from "@/utils/globalFunctions";
+import { getBlogContentByID } from "@/services/BlogService";
+import { fetchData, getBaseURL } from "@/utils/globalFunctions";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const DataContext = createContext();
@@ -10,7 +9,7 @@ export const DataProvider = ({ children }) => {
 	const [skillsData, setSkillsData] = useState([]);
 	const [educationData, setEducationData] = useState([]);
 	const [projectData, setProjectData] = useState([]);
-	const [blogData, setBlogData] = useState([]);
+	const [blogContents, setBlogContents] = useState({});
 	const [thumbnailData, setThumbnailData] = useState([]);
 	const [isDataLoaded, setIsDataLoaded] = useState(false);
 
@@ -35,7 +34,6 @@ export const DataProvider = ({ children }) => {
 			setSkillsData(data.skills);
 			setEducationData(data.education);
 			setProjectData(data.projects);
-			setBlogData(data.blog);
 			setThumbnailData(thumbnailList.resources);
 			setIsDataLoaded(true);
 		} catch (error) {
@@ -43,34 +41,21 @@ export const DataProvider = ({ children }) => {
 		}
 	};
 
-	const fetchBlogByID = async (id) => {
-		return getBlogByID(id);
-	};
-
 	const fetchBlogContentByID = async (id, update = true) => {
-		const blog = blogData.filter((item) => item._id === id)[0];
-		if (blog?.content || isBlogContentFetching) return;
+		if (blogContents[id] || isBlogContentFetching) return;
 
-		try {
-			isBlogContentFetching = true;
-			const data = await fetchData(`${baseURL}/api/blog/content/${id}`);
-			blog.content = data.content;
-			isBlogContentFetching = false;
+		isBlogContentFetching = true;
 
-			if (update) {
-				const mergedData = mergeListsById(blogData, [blog]);
-				setBlogData(mergedData);
-			}
+		const data = await getBlogContentByID(id, baseURL);
+		const contentObject = {
+			[id]: data.content,
+		};
 
-			return data.content;
-		} catch (error) {
-			isBlogContentFetching = false;
-			console.error(error);
-		}
-	};
+		setBlogContents({ ...blogContents, ...contentObject });
 
-	const setBlog = (data) => {
-		setBlogData(data);
+		isBlogContentFetching = false;
+
+		return data.content;
 	};
 
 	return (
@@ -80,12 +65,10 @@ export const DataProvider = ({ children }) => {
 				skillsData,
 				educationData,
 				projectData,
-				blogData,
+				blogContents,
 				thumbnailData,
 				isDataLoaded,
 				fetchBlogContentByID,
-				fetchBlogByID,
-				setBlog,
 			}}
 		>
 			{children}

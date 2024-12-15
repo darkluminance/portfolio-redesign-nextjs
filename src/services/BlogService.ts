@@ -14,10 +14,10 @@ export const getBlogByID = async (id: string, baseUrl: string) => {
 	}
 };
 
-export const getBlogIDFromTextID = async (id: string, baseUrl: string) => {
+export const getBlogContentByID = async (id: string, baseUrl: string) => {
 	try {
 		const data = await fetchData(
-			`${baseUrl ? baseUrl : baseURL}/api/blog/getID/${id}`
+			`${baseUrl ? baseUrl : baseURL}/api/blog/content/${id}`
 		);
 
 		return data;
@@ -26,12 +26,11 @@ export const getBlogIDFromTextID = async (id: string, baseUrl: string) => {
 	}
 };
 
-export const getBlogMetadataFromTextID = async (
-	id: string,
-	baseUrl: string
-) => {
+export const getBlogIDFromTextID = async (id: string, baseUrl: string) => {
 	try {
-		const data = await fetchData(`${baseUrl}/api/blog/getMetadata/${id}`);
+		const data = await fetchData(
+			`${baseUrl ? baseUrl : baseURL}/api/blog/getID/${id}`
+		);
 
 		return data;
 	} catch (error) {

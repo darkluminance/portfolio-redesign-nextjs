@@ -4,13 +4,14 @@ import likeIcon from "@/assets/like.svg";
 import commentIcon from "@/assets/comment.svg";
 import Image from "next/image";
 import { useDataContext } from "@/context/DataContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchData } from "@/utils/globalFunctions";
 
 function Blog() {
-	const { blogData, setBlog, fetchBlogContentByID, isDataLoaded } =
-		useDataContext();
+	const { fetchBlogContentByID, isDataLoaded } = useDataContext();
+
+	const [blogData, setBlogData] = useState([]);
 
 	const blogItemHovered = (id) => {
 		if (!isDataLoaded) return;
@@ -19,11 +20,19 @@ function Blog() {
 
 	const getBlogs = async () => {
 		const ret = await fetchData("/api/blog");
-		setBlog(ret);
+
+		ret.forEach((item) => {
+			item.thumbnail_small = item.thumbnail.replace(
+				"image/upload/",
+				"image/upload/c_scale,w_400/"
+			);
+		});
+
+		setBlogData(ret);
 	};
 
 	useEffect(() => {
-		if (blogData.length <= 1) getBlogs();
+		if (!blogData.length) getBlogs();
 	}, []);
 
 	return (
@@ -43,7 +52,7 @@ function Blog() {
 										className="blogItem"
 										onMouseEnter={() => blogItemHovered(blogItem._id)}
 									>
-										<img src={blogItem.thumbnail}></img>
+										<img src={blogItem.thumbnail_small}></img>
 										<div className="blogTexts">
 											<div className="blogMeta flex-space-between">
 												<span className="blogDate">
