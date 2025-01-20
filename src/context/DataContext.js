@@ -14,6 +14,7 @@ export const DataProvider = ({ children }) => {
 	const [isDataLoaded, setIsDataLoaded] = useState(false);
 
 	const [baseURL, setBaseURL] = useState("");
+	const [isRouting, setIsRouting] = useState(false);
 
 	let isBlogContentFetching = false;
 
@@ -58,6 +59,10 @@ export const DataProvider = ({ children }) => {
 		return data.content;
 	};
 
+	const setRoutingStatus = (status) => {
+		setIsRouting(status);
+	};
+
 	return (
 		<DataContext.Provider
 			value={{
@@ -68,6 +73,8 @@ export const DataProvider = ({ children }) => {
 				blogContents,
 				thumbnailData,
 				isDataLoaded,
+				isRouting,
+				setRoutingStatus,
 				fetchBlogContentByID,
 			}}
 		>

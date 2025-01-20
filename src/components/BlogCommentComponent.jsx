@@ -1,10 +1,12 @@
 import { fetchData } from "@/utils/globalFunctions";
 import { useEffect, useState } from "react";
+import Spinner from "./Spinner";
 
 function BlogCommentComponent({ onClose, isVisible, id }) {
 	const [comments, setComments] = useState([]);
 	const [name, setName] = useState("");
 	const [comment, setComment] = useState("");
+	const [isPosting, setIsPosting] = useState(false);
 
 	const fetchComments = async () => {
 		try {
@@ -19,6 +21,7 @@ function BlogCommentComponent({ onClose, isVisible, id }) {
 		if (!name || !comment) return alert("Please fill out both fields!");
 
 		const newComment = { id: id, name: name, comment: comment };
+		setIsPosting(true);
 
 		await fetch("/api/blog/comments/add", {
 			method: "POST",
@@ -31,6 +34,7 @@ function BlogCommentComponent({ onClose, isVisible, id }) {
 		setComments([newComment, ...comments]);
 		setName("");
 		setComment("");
+		setIsPosting(false);
 	};
 
 	useEffect(() => {
@@ -60,7 +64,9 @@ function BlogCommentComponent({ onClose, isVisible, id }) {
 						value={comment}
 						onChange={(e) => setComment(e.target.value)}
 					/>
-					<button onClick={handlePostComment}>Post</button>
+					<button onClick={handlePostComment}>
+						{isPosting ? <Spinner></Spinner> : "Post"}
+					</button>
 				</div>
 				<div className="comments-list">
 					{comments.map((c, index) => (
