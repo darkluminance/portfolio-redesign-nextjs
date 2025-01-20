@@ -10,6 +10,7 @@ import legends_arceus from "@/assets/game_covers/legends_arceus.jpg";
 import { useDataContext } from "@/context/DataContext";
 import { fetchImgData, getAge } from "@/utils/globalFunctions";
 import { Suspense, useEffect, useState } from "react";
+import Spinner from "./Spinner";
 
 export default function HomePage() {
 	return (
@@ -65,8 +66,9 @@ function MySkills() {
 				<span>NextJS</span>
 				<span>VueJS</span>
 				<span>ExpressJS</span>
+				<span>Go</span>
 				<span>MongoDB</span>
-				<span>Bitbucket</span>
+				<span>SQL</span>
 				<span>Jira</span>
 			</div>
 		</div>
@@ -140,6 +142,11 @@ function FeaturedWorks() {
 	return (
 		<div className="homeContent">
 			<h2 className="homeTitle">Featured Works</h2>
+			{!isDataLoaded && (
+				<div className="mt-1r">
+					<Spinner></Spinner>
+				</div>
+			)}
 			{isDataLoaded && featuredProjectList && (
 				<div className="homeFeaturedWorksContent homeExtraContent">
 					<Suspense>

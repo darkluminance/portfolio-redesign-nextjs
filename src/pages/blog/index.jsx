@@ -7,11 +7,15 @@ import { useDataContext } from "@/context/DataContext";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchData } from "@/utils/globalFunctions";
+import Spinner from "@/components/Spinner";
+import SpinnerBackdrop from "@/components/SpinnerBackdrop";
 
 function Blog() {
-	const { fetchBlogContentByID, isDataLoaded } = useDataContext();
+	const { fetchBlogContentByID, isDataLoaded, isRouting, setRoutingStatus } =
+		useDataContext();
 
 	const [blogData, setBlogData] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const blogItemHovered = (id) => {
 		if (!isDataLoaded) return;
@@ -19,7 +23,11 @@ function Blog() {
 	};
 
 	const getBlogs = async () => {
+		setIsLoading(true);
+
 		const ret = await fetchData("/api/blog");
+
+		setIsLoading(false);
 
 		ret.forEach((item) => {
 			item.thumbnail_small = item.thumbnail.replace(
@@ -32,21 +40,25 @@ function Blog() {
 	};
 
 	useEffect(() => {
+		setRoutingStatus(false);
 		if (!blogData.length) getBlogs();
 	}, []);
 
 	return (
 		<Page>
 			<Topnav></Topnav>
+			{isRouting && <SpinnerBackdrop></SpinnerBackdrop>}
 			<div className="page flex-center-hor">
 				<div className="container">
 					<h1 className="pageheader">My Blogs</h1>
 					<div className="blogContainer mt-4r">
-						{blogData ? (
+						{isLoading && <Spinner></Spinner>}
+						{blogData &&
 							blogData.map((blogItem) => (
 								<Link
 									href={`/blog/${encodeURIComponent(blogItem.id)}`}
 									key={blogItem._id}
+									onClick={() => setRoutingStatus(true)}
 								>
 									<div
 										className="blogItem"
@@ -76,10 +88,7 @@ function Blog() {
 										</div>
 									</div>
 								</Link>
-							))
-						) : (
-							<div>Loading...</div>
-						)}
+							))}
 					</div>
 				</div>
 			</div>

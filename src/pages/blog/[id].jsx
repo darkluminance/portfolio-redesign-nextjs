@@ -12,6 +12,7 @@ import { fetchData } from "@/utils/globalFunctions";
 import Head from "next/head";
 import BlogCommentComponent from "@/components/BlogCommentComponent";
 import { getBlogByID, getBlogIDFromTextID } from "@/services/BlogService";
+import Spinner from "@/components/Spinner";
 
 function Paaage({ blog }) {
 	const router = useRouter();
@@ -139,7 +140,11 @@ function Paaage({ blog }) {
 							</div>
 						</div>
 					)}
-					{!blog && <div>Loading...</div>}
+					{!blog && (
+						<div>
+							<Spinner></Spinner>
+						</div>
+					)}
 				</div>
 			</div>
 		</Page>

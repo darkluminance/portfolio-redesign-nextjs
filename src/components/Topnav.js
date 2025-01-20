@@ -1,12 +1,21 @@
-import Ryelogo from './Ryelogo';
-import Link from 'next/link';
+import Ryelogo from "./Ryelogo";
+import Link from "next/link";
+import { useState } from "react"; // Add this import
+import SpinnerBackdrop from "./SpinnerBackdrop";
 
 const Topnav = ({ routeLink, routeName }) => {
+	const [isClicked, setIsClicked] = useState(false);
+
+	const handleClick = () => {
+		setIsClicked(true);
+	};
+
 	return (
 		<div className="topNav flex-center-ver">
+			{isClicked && <SpinnerBackdrop></SpinnerBackdrop>}
 			<div className="homeLink flex-row flex-center-ver">
 				<div className="homeItem">
-					<Link href={routeLink} className="text-link">
+					<Link href={routeLink} className="text-link" onClick={handleClick}>
 						{routeName}
 					</Link>
 				</div>
@@ -22,8 +31,8 @@ const Topnav = ({ routeLink, routeName }) => {
 };
 
 Topnav.defaultProps = {
-	routeLink: '/',
-	routeName: 'HOME',
+	routeLink: "/",
+	routeName: "HOME",
 };
 
 export default Topnav;
