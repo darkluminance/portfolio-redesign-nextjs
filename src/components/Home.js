@@ -2,11 +2,6 @@ import Image from "next/image";
 import Topbar from "./Topbar";
 import Link from "next/link";
 
-import minecraft from "@/assets/game_covers/minecraft.jpg";
-import totk from "@/assets/game_covers/totk.jpg";
-import nier_automata from "@/assets/game_covers/nier_automata.jpg";
-import legends_arceus from "@/assets/game_covers/legends_arceus.jpg";
-
 import { useDataContext } from "@/context/DataContext";
 import { fetchImgData, getAge } from "@/utils/globalFunctions";
 import { Suspense, useEffect, useState } from "react";
@@ -24,18 +19,15 @@ export default function HomePage() {
 						I'm a {getAge()}y old{" "}
 						<span className="strong">Software Engineer</span> from{" "}
 						<span className="strong">Dhaka, Bangladesh</span>. I am currently
-						employed at <span className="strong">Enosis Solutions</span> working
-						primarily on an interactive 3D application for{" "}
-						<span className="strong">webVR/AR devices.</span>
+						employed at <span className="strong">Enosis Solutions.</span> My experiences include <span className="strong">UI/UX Design, Game Development,</span> and building <span className="strong">scalable web applications.</span>
 					</p>
 					<p className="homeDescriptionLong">
 						I love to <span className="strong">travel</span>, especially to the{" "}
 						<span className="strong">mountains</span>, and take photos. I often
 						play video games and watch anime in my free time and am a big fan of{" "}
-						<span className="strong">Attack on Titan.</span> As a coder, I'm
-						mostly a <span className="strong">frontend</span> guy because my big
+						<span className="strong">Attack on Titan.</span> I have a big
 						love towards <span className="strong">arts and designs</span> and
-						ocassionally do <span className="strong">Game Dev</span> as a hobby.
+						I occasionally do <span className="strong">Game Dev</span> as a hobby.
 						My big dream is to someday own a{" "}
 						<span className="strong">cat.</span>
 					</p>
@@ -46,9 +38,6 @@ export default function HomePage() {
 				</div>
 				<div className="homeTextcontent">
 					<FeaturedWorks></FeaturedWorks>
-				</div>
-				<div className="homeTextcontent">
-					<FavoriteGames></FavoriteGames>
 				</div>
 			</main>
 		</div>
@@ -62,11 +51,11 @@ function MySkills() {
 
 			<div className="aboutCategorySkills homeExtraContent">
 				<span>Typescript</span>
-				<span>ThreeJS</span>
 				<span>NextJS</span>
 				<span>VueJS</span>
 				<span>ExpressJS</span>
-				<span>Go</span>
+				<span>Python</span>
+				<span>n8n</span>
 				<span>MongoDB</span>
 				<span>SQL</span>
 				<span>Jira</span>
@@ -75,43 +64,9 @@ function MySkills() {
 	);
 }
 
-function FavoriteGames() {
-	const gameData = [
-		{
-			title: "Minecraft",
-			image: minecraft,
-		},
-		{
-			title: "Legend of Zelda: Tears of the Kingdom",
-			image: totk,
-		},
-	];
-
-	return (
-		<div className="homeContent">
-			<h1 className="homeTitle">Favorite Games</h1>
-
-			<Suspense>
-				<div className="homeFavoriteGamesContent homeExtraContent">
-					{gameData.map((game, index) => (
-						<div className="pics" key={index} onClick={() => {}}>
-							<div className="gameImage">
-								<Image src={game.image} alt="" loading="lazy" />
-							</div>
-							<div className="info flex flex-col flex-gap-1">
-								<h2>{game.title}</h2>
-							</div>
-						</div>
-					))}
-				</div>
-			</Suspense>
-		</div>
-	);
-}
-
 function FeaturedWorks() {
 	const { projectData, thumbnailData, isDataLoaded } = useDataContext();
-	const featuredList = ["maze_generator", "url_shortener"];
+	const featuredList = ["trackgrad", "maze_generator"];
 	const [featuredProjectList, setFeatureProjectData] = useState([]);
 	const [projectThumbnails, setprojectThumbnails] = useState([]);
 
